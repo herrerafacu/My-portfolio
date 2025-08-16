@@ -3,7 +3,7 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import experiences from "./data/experiences";
 import skills from "./data/skills";
 import projects from "./data/projects";
-import Navbar from "./components/navbar";
+import Navbar from "./components/navbar.jsx";
 import Contact from "./components/contact";
 import Experience from "./components/experience";
 import Hero from "./components/hero";
