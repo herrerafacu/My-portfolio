@@ -1,0 +1,20 @@
+export const skills = [
+  "Html",
+  "CSS / Styled Components",
+  "JavaScript",
+  "React",
+  "TypeScript",
+  "Vue",
+  "Angular",
+  "Redux.js",
+  "Material UI",
+  "Node.js / Express",
+  "MySQL",
+  "PHP",
+  "Docker",
+  "Vite",
+  "Git / GitHub / Vercel",
+  "JIRA",
+  "Postman",
+];
+export default skills;
