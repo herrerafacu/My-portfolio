@@ -1,10 +1,10 @@
 import faqImage from "../assets/fAQ Solution image.png";
 import tableImage from "../assets/Table.png";
-import tableFilterImage from "../assets/Table Filter.png";
+import tableFilterImage from "../assets/Table filter.png"; // "filter" con f minúscula
 import deleteImage from "../assets/Eliminar.png";
 import editImage from "../assets/Editar.png";
 import newAnimeImage from "../assets/Nuevo.png";
-import baseImage from "../assets/baseDatos.png";
+import baseImage from "../assets/BaseDatos.png";
 export const projects = [
   {
     title: "fAQ Solutions - Landing",
