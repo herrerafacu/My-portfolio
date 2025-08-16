@@ -1,19 +1,21 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
+
 import experiences from "./data/experiences";
-import skills from "./data/skills";
 import projects from "./data/projects";
-import Navbar from "./components/navbar.jsx";
-import Contact from "./components/contact";
-import Experience from "./components/experience";
-import Hero from "./components/hero";
-import Projects from "./components/projects";
-import Skills from "./components/skills";
-import { skillsByCategory, skillsFlat, courses } from "./data/skills";
-import Footer from "./components/footer";
-import Aboutme from "./components/aboutMe";
-import ProjectDetailsDialog from "./components/projectDetailsDialog";
+import { skillsByCategory, courses } from "./data/skills";
 import { buildTheme } from "./theme";
+
+import Navbar from "./components/Navbar.jsx";
+import Contact from "./components/Contact.jsx";
+import Experience from "./components/Experience.jsx";
+import Hero from "./components/Hero.jsx";
+import Projects from "./components/Projects.jsx";
+import Skills from "./components/Skills.jsx";
+import Footer from "./components/Footer.jsx";
+import AboutMe from "./components/AboutMe.jsx";
+import ProjectDetailsDialog from "./components/ProjectDetailsDialog.jsx";
+
 export default function App() {
   const [mode, setMode] = useState("dark");
   useEffect(() => {
@@ -35,7 +37,8 @@ export default function App() {
       <CssBaseline />
       <Navbar mode={mode} setMode={setMode} />
       <Hero />
-      <Aboutme />
+
+      <AboutMe />
       <Skills skillsCategories={skillsByCategory} courses={courses} />
 
       <ProjectDetailsDialog
@@ -43,6 +46,7 @@ export default function App() {
         project={activeProject}
         onClose={handleCloseDetails}
       />
+
       <Experience experiences={experiences} />
       <Projects projects={projects} />
 
