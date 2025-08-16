@@ -1,4 +1,3 @@
-// Estilos compartidos y tipografías
 export const sectionSX = {
   width: "100%",
   py: { xs: 5, md: 7 },

@@ -1,6 +1,3 @@
-// src/data/skills.js
-
-// ✅ Agrupado por categorías
 export const skillsByCategory = {
   Frontend: [
     "React",
@@ -17,7 +14,6 @@ export const skillsByCategory = {
   Herramientas: ["Git / GitHub / Vercel", "Docker", "JIRA", "Postman"],
 };
 
-// ✅ Si querés mantener el array plano en otras partes
 export const skillsFlat = [
   "HTML",
   "CSS / Styled Components",
@@ -37,8 +33,6 @@ export const skillsFlat = [
   "JIRA",
   "Postman",
 ];
-
-// ✅ Cursos (Udemy)
 export const courses = [
   {
     title: "Master en Frameworks JavaScript: React, Angular y Vue",

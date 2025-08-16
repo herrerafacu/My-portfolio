@@ -1,6 +1,6 @@
 import faqImage from "../assets/fAQ Solution image.png";
 import tableImage from "../assets/Table.png";
-import tableFilterImage from "../assets/Table filter.png"; // "filter" con f minúscula
+import tableFilterImage from "../assets/Table filter.png";
 import deleteImage from "../assets/Eliminar.png";
 import editImage from "../assets/Editar.png";
 import newAnimeImage from "../assets/Nuevo.png";
@@ -12,7 +12,7 @@ export const projects = [
       "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance.",
     stack: ["HTML", "CSS Tailwind", "Javascript", "Vercel"],
     link: "https://faq-solutions.vercel.app/",
-    repo: "https://github.com/tuusuario/metz-landing",
+    repo: null,
     image: faqImage,
   },
   {
