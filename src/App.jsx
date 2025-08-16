@@ -9,6 +9,7 @@ import Experience from "./components/Experience";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import { skillsByCategory, skillsFlat, courses } from "./data/skills";
 import Footer from "./components/Footer";
 import Aboutme from "./components/AboutMe";
 import ProjectDetailsDialog from "./components/ProjectDetailsDialog";
@@ -35,14 +36,16 @@ export default function App() {
       <Navbar mode={mode} setMode={setMode} />
       <Hero />
       <Aboutme />
-      <Projects projects={projects} />
+      <Skills skillsCategories={skillsByCategory} courses={courses} />
+
       <ProjectDetailsDialog
         open={openDetails}
         project={activeProject}
         onClose={handleCloseDetails}
       />
-      <Skills skills={skills} />
       <Experience experiences={experiences} />
+      <Projects projects={projects} />
+
       <Contact />
       <Footer />
     </ThemeProvider>

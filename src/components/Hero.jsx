@@ -36,7 +36,8 @@ export default function Hero() {
         />
 
         <Typography sx={heroTitleSX}>
-          Creo interfaces limpias, rápidas y con{" "}
+          Desarrollo aplicaciones web rápidas, escalables y con gran experiencia
+          de usuario{" "}
           <Box
             component="span"
             sx={{
@@ -44,14 +45,12 @@ export default function Hero() {
               WebkitBackgroundClip: "text",
               color: "transparent",
             }}
-          >
-            excelente UX
-          </Box>
+          ></Box>
         </Typography>
 
         <Typography sx={leadSX}>
-          Desarrollador Frontend con foco en React, MUI y buenas prácticas. Me
-          gusta construir productos reales y medibles.
+          Desarrollador Full Stack con foco en frontend (React y MUI). Me gusta
+          crear productos reales, con código limpio y resultados medibles.
         </Typography>
 
         <Stack

@@ -35,7 +35,7 @@ export default function Projects({ projects }) {
     <>
       <Box id="projects" sx={{ ...sectionSX }}>
         <Stack spacing={3} sx={{ width: "100%" }} alignItems="center">
-          <Typography sx={titleSX}>Algunas cosas que construí</Typography>
+          <Typography sx={titleSX}>Algunos proyectos que construí</Typography>
 
           <Grid
             container

@@ -34,7 +34,7 @@ export default function Navbar({ mode, setMode }) {
               color: "transparent",
             }}
           >
-            Facundo Herrera
+            Facundo Javier Herrera
           </Box>
         </Typography>
 

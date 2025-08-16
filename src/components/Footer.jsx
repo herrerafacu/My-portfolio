@@ -27,7 +27,7 @@ export default function Footer() {
         <IconButton
           color="inherit"
           component={MLink}
-          href="https://github.com/tuusuario"
+          href="https://github.com/herrerafacu"
           target="_blank"
         >
           <GitHubIcon />
@@ -35,7 +35,7 @@ export default function Footer() {
         <IconButton
           color="inherit"
           component={MLink}
-          href="https://linkedin.com/in/tuusuario"
+          href="https://www.linkedin.com/in/facundo-herrera-289a111b9/"
           target="_blank"
         >
           <LinkedInIcon />
@@ -43,7 +43,7 @@ export default function Footer() {
         <IconButton
           color="inherit"
           component={MLink}
-          href="mailto:tucorreo@ejemplo.com"
+          href="mailto:facu.h_007@hotmail.com"
         >
           <MailIcon />
         </IconButton>

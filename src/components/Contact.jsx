@@ -10,23 +10,23 @@ export default function Contact() {
     <Box id="contact" sx={{ ...sectionSX }}>
       <Card sx={{ p: 3, width: "min(720px, 100%)" }}>
         <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
-          ¿Hablamos de tu próximo proyecto?
+          ¿Te interesó mi perfil?
         </Typography>
         <Typography color="text.secondary" sx={{ mb: 2 }}>
-          Escribime y armamos algo a medida.
+          Estoy abierto a nuevas oportunidades, podés contactarme directamente.
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="center">
           <Button
             variant="contained"
             startIcon={<MailIcon />}
-            href="mailto:tucorreo@ejemplo.com"
+            href="mailto:facu.h_007@hotmail.com"
           >
             Contactar
           </Button>
           <Button
             variant="outlined"
             startIcon={<LinkedInIcon />}
-            href="https://linkedin.com/in/tuusuario"
+            href="https://www.linkedin.com/in/facundo-herrera-289a111b9/"
             target="_blank"
           >
             LinkedIn

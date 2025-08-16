@@ -4,9 +4,9 @@ export const experiences = [
     company: "PBS - Telviso",
     period: "jun.2025 – Actualidad",
     bullets: [
-      "Diseño y desarrollo web",
-      "Manejo de base de datos",
-      "Integraciones con APIs",
+      "Desarrollo y mantenimiento de aplicaciones internas",
+      "Creación y optimización de CRUDs para la gestión eficiente de datos",
+      "Diseño y administración de bases de datos SQL",
     ],
   },
   {
@@ -20,13 +20,13 @@ export const experiences = [
     ],
   },
   {
-    role: "Desarrollador web",
+    role: "Desarrollador Web",
     company: "Miii",
     period: "nov.2021 – dic.2023",
     bullets: [
-      "Diseño y desarrollo web",
-      "Automatizaciones con scripts y manejo de datos",
-      "Integraciones con APIs",
+      "Desarrollo de landings y backoffice interno con React y Material UI.",
+      "Integración de APIs y automatización de procesos.",
+      "Gestión de deploys y mantenimiento en producción.",
     ],
   },
 ];
