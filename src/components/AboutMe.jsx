@@ -1,4 +1,3 @@
-// src/components/AboutMe.jsx
 import { Box, Stack, Typography } from "@mui/material";
 import { sectionSX, titleSX, leadSX } from "../styles";
 import { Work as WorkIcon } from "@mui/icons-material";
@@ -7,7 +6,6 @@ export default function Aboutme() {
   return (
     <Box id="about" sx={{ ...sectionSX }}>
       <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="center">
-        {/* Encabezado */}
         <Stack
           direction="row"
           spacing={1}
@@ -20,10 +18,8 @@ export default function Aboutme() {
           </Typography>
         </Stack>
 
-        {/* Título */}
         <Typography sx={titleSX}>Quién soy y cómo trabajo</Typography>
 
-        {/* Contenido */}
         <Stack sx={{ width: "100%", maxWidth: { xs: 720, md: 900 } }}>
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
             <strong>¿Quién soy?</strong>
