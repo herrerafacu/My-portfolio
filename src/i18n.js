@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 import es from "./locales/es/common.json";
-import en from "./locales/es/en/common.json";
+import en from "./locales/en/common.json";
 
 const saved = localStorage.getItem("lang");
 
