@@ -18,13 +18,8 @@ import {
   OpenInNew as OpenInNewIcon,
   Verified as VerifiedIcon,
 } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
-/**
- * Props:
- * - skillsCategories: { Categoria: string[] }
- * - skills: string[] (fallback)
- * - courses: [{ title, provider, year, url? }]
- */
 export default function Skills({
   skillsCategories,
   skills = [],
@@ -34,13 +29,13 @@ export default function Skills({
     skillsCategories &&
     typeof skillsCategories === "object" &&
     Object.keys(skillsCategories).length > 0;
+  const { t } = useTranslation();
 
   return (
     <Box id="skills" sx={{ ...sectionSX }}>
       <Stack spacing={3.5} sx={{ width: "100%" }} alignItems="center">
-        <Typography sx={titleSX}>Conocimientos y herramientas</Typography>
+        <Typography sx={titleSX}>{t("skills.title")}</Typography>
 
-        {/* ===== Chips por categoría o array plano ===== */}
         <Stack spacing={3} sx={{ width: "100%", maxWidth: 1100 }}>
           {hasCategories ? (
             Object.entries(skillsCategories).map(([cat, items]) => (
@@ -92,7 +87,6 @@ export default function Skills({
           )}
         </Stack>
 
-        {/* ===== Cursos (Udemy) ===== */}
         {Array.isArray(courses) && courses.length > 0 && (
           <Card sx={{ width: "min(900px, 100%)" }}>
             <CardContent>
@@ -104,7 +98,7 @@ export default function Skills({
               >
                 <SchoolIcon color="primary" />
                 <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                  Cursos y Certificaciones
+                  {t("skills.courses")}{" "}
                 </Typography>
               </Stack>
 

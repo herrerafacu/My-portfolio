@@ -37,19 +37,15 @@ export default function App() {
       <CssBaseline />
       <Navbar mode={mode} setMode={setMode} />
       <Hero />
-
       <AboutMe />
       <Skills skillsCategories={skillsByCategory} courses={courses} />
-
       <ProjectDetailsDialog
         open={openDetails}
         project={activeProject}
         onClose={handleCloseDetails}
       />
-
       <Experience experiences={experiences} />
       <Projects projects={projects} />
-
       <Contact />
       <Footer />
     </ThemeProvider>

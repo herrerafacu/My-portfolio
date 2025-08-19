@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Open to new projects",
+    "title_prefix": "I develop fast, scalable web applications with great user experience.",
+    "lead": "Full-stack developer with a focus on front-end (React and MUI). I enjoy building real products with clean code and measurable results.",
+    "cta_projects": "View projects",
+    "cta_cv": "Download CV"
+  },
+  "about": {
+    "about_me": "About me",
+    "title": "Who I am & how I work",
+    "who_title": "Who am I?",
+    "who_body": "I'm a full-stack developer focused on the frontend using React and Material UI. I have over three years of experience developing web applications, high-performance landing pages, and API integrations.",
+    "who_body2": "At Miiii, I was responsible for developing the internal back office and corporate landing pages, as well as managing deployments and production maintenance. I then worked as a freelancer, building landing pages and applications with React, Angular, Tailwind CSS, and other technologies.",
+    "who_body3": "I currently work at PBS as a Full Stack Developer, working in both the frontend and backend with PHP and MySQL, with a focus on scalability, code quality, and continuous improvement.",
+    "how_title": "How I work",
+    "how_body": "I like to work in teams, build quickly, measure results, and constantly optimize digital products. I prioritize clear communication, iterative deliveries, and readable and maintainable code."
+  },
+  "projects": {
+    "title": "Some things I've built",
+    "details": "Details",
+    "go_landing": "Go to landing",
+    "highlights": "Highlights",
+    "close": "Close",
+    "items": [
+      {
+        "title": "fAQ Solutions - Landing",
+        "description": "Landing page focused on conversion: carousel, contact form, responsive design and performance.",
+        "highlights": []
+      },
+      {
+        "title": "My anime list (private)",
+        "description": "Anime listing app with full CRUD (create/edit/delete), search, filters and pagination. Data stored in MySQL.",
+        "highlights": [
+          "Full CRUD (create/edit/delete)",
+          "Search and filters across all table data",
+          "Pagination and infinite-scroll",
+          "Data layer with MySQL (connection pool)"
+        ]
+      }
+    ]
+  },
+
+  "skills": {
+    "title": "Knowledge and tools",
+    "tools": "Tools",
+    "courses": "Courses & Certifications"
+  },
+  "experience": {
+    "title": "Where I applied what I know",
+    "items": [
+      {
+        "role": "Full Stack Developer",
+        "company": "PBS - Telviso",
+        "period": "Jun 2025 – Present",
+        "bullets": [
+          "Development and maintenance of internal applications",
+          "Creation and optimization of CRUDs for efficient data management",
+          "Design and administration of SQL databases"
+        ]
+      },
+      {
+        "role": "Full Stack Developer (Freelance)",
+        "company": "fAQ Solutions",
+        "period": "2024 – Present",
+        "bullets": [
+          "Design and development of custom landing pages and web applications",
+          "API integrations and deployment on Vercel",
+          "Performance optimization and basic SEO"
+        ]
+      },
+      {
+        "role": "Web Developer",
+        "company": "Miii",
+        "period": "Nov 2021 – Dec 2023",
+        "bullets": [
+          "Development of landing pages and internal back office with React and Material UI",
+          "API integration and process automation",
+          "Deployment management and production maintenance"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "You were interested in my profile?",
+    "lead": "I am open to new opportunities, you can contact me directly.",
+    "linkedin": "LinkedIn",
+    "email": "Contact"
+  },
+  "footer": {
+    "made": "Built with React & Material UI"
+  }
+}

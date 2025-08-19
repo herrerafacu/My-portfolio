@@ -6,13 +6,26 @@ import {
   Stack,
   Button,
   IconButton,
+  Tooltip,
 } from "@mui/material";
+import LanguageIcon from "@mui/icons-material/Language";
+
 import {
   DarkMode as DarkModeIcon,
   LightMode as LightModeIcon,
 } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar({ mode, setMode }) {
+  const { i18n } = useTranslation();
+  const { t } = useTranslation();
+
+  const toggleLang = () => {
+    const next = i18n.language === "es" ? "en" : "es";
+    i18n.changeLanguage(next);
+    localStorage.setItem("lang", next);
+  };
+
   return (
     <AppBar
       position="sticky"
@@ -44,18 +57,26 @@ export default function Navbar({ mode, setMode }) {
           sx={{ display: { xs: "none", md: "flex" } }}
         >
           {[
-            { href: "#about", label: "Sobre mí" },
-            { href: "#projects", label: "Proyectos" },
-            { href: "#skills", label: "Habilidades" },
-            { href: "#experience", label: "Experiencia" },
-            { href: "#contact", label: "Contacto" },
+            { href: "#about", label: t("nav.about") },
+            { href: "#projects", label: t("nav.projects") },
+            { href: "#skills", label: t("nav.skills") },
+            { href: "#experience", label: t("nav.experience") },
+            { href: "#contact", label: t("nav.contact") },
           ].map((l) => (
             <Button key={l.href} href={l.href} color="inherit" size="small">
               {l.label}
             </Button>
           ))}
         </Stack>
-
+        <Tooltip
+          title={
+            i18n.language === "es" ? "Cambiar a English" : "Switch to Spanish"
+          }
+        >
+          <IconButton color="inherit" onClick={toggleLang}>
+            <LanguageIcon />
+          </IconButton>
+        </Tooltip>
         <IconButton
           color="inherit"
           sx={{ ml: 1 }}

@@ -16,11 +16,30 @@ import {
 } from "@mui/material";
 import { OpenInNew as OpenInNewIcon } from "@mui/icons-material";
 import { sectionSX, titleSX } from "../styles";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Projects({ projects }) {
   const [openDetails, setOpenDetails] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const { t } = useTranslation();
+
+  const i18nItems = t("projects.items", { returnObjects: true }) || [];
+
+  const mergedProjects = useMemo(() => {
+    return projects.map((p, idx) => {
+      const text = i18nItems[idx] || {};
+      return {
+        ...p,
+        title: text.title ?? p.title,
+        description: text.description ?? p.description,
+        highlights:
+          Array.isArray(text.highlights) && text.highlights.length
+            ? text.highlights
+            : p.highlights,
+      };
+    });
+  }, [projects, i18nItems]);
 
   const handleOpenDetails = (p) => {
     setActiveProject(p);
@@ -35,7 +54,7 @@ export default function Projects({ projects }) {
     <>
       <Box id="projects" sx={{ ...sectionSX }}>
         <Stack spacing={3} sx={{ width: "100%" }} alignItems="center">
-          <Typography sx={titleSX}>Algunos proyectos que construí</Typography>
+          <Typography sx={titleSX}>{t("projects.title")}</Typography>
 
           <Grid
             container
@@ -43,7 +62,7 @@ export default function Projects({ projects }) {
             justifyContent="center"
             sx={{ width: "100%", mx: 0 }}
           >
-            {projects.map((p, i) => (
+            {mergedProjects.map((p, i) => (
               <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
                 <Card
                   sx={{
@@ -92,7 +111,7 @@ export default function Projects({ projects }) {
                         href={p.link}
                         target="_blank"
                       >
-                        Ir a la Landing
+                        {t("projects.go_landing")}
                       </Button>
                     )}
                     {p.gallery && (
@@ -101,7 +120,7 @@ export default function Projects({ projects }) {
                         variant="contained"
                         onClick={() => handleOpenDetails(p)}
                       >
-                        Detalles
+                        {t("projects.details")}
                       </Button>
                     )}
                   </CardActions>
@@ -111,6 +130,7 @@ export default function Projects({ projects }) {
           </Grid>
         </Stack>
       </Box>
+
       <Dialog
         open={openDetails}
         onClose={handleCloseDetails}
@@ -152,10 +172,11 @@ export default function Projects({ projects }) {
                   </Box>
                 ))}
               </Stack>
+
               {activeProject.highlights?.length > 0 && (
                 <>
                   <Typography sx={{ fontWeight: 700, mb: 1 }}>
-                    Lo destacado
+                    {t("projects.highlights")}
                   </Typography>
                   <Stack component="ul" sx={{ pl: 2, m: 0, gap: 0.5 }}>
                     {activeProject.highlights.map((h, i) => (
@@ -166,6 +187,7 @@ export default function Projects({ projects }) {
                   </Stack>
                 </>
               )}
+
               <Stack
                 direction="row"
                 spacing={1}
@@ -179,7 +201,9 @@ export default function Projects({ projects }) {
               </Stack>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleCloseDetails}>Cerrar</Button>
+              <Button onClick={handleCloseDetails}>
+                {t("projects.close")}
+              </Button>
             </DialogActions>
           </>
         )}
