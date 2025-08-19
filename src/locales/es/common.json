@@ -1,0 +1,101 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Disponible para nuevos proyectos",
+    "title_prefix": "Desarrollo aplicaciones web rápidas, escalables y con gran experiencia de usuario",
+    "lead": "Desarrollador Full Stack con foco en frontend (React y MUI). Me gusta crear productos reales, con código limpio y resultados medibles.",
+    "cta_projects": "Ver proyectos",
+    "cta_cv": "Descargar CV"
+  },
+  "about": {
+    "about_me": "Sobre mi",
+    "title": "Quién soy y cómo trabajo",
+    "who_title": "¿Quién soy?",
+    "who_body": "Soy Desarrollador Full Stack con foco en el frontend utilizando React y Material UI. Cuento con más de 3 años de experiencia en el desarrollo de aplicaciones web, landings de alto rendimiento e integraciones con APIs.",
+    "who_body2": "En Miiii me encargué del desarrollo del backoffice interno y de landings corporativos, además de gestionar deploys y mantenimiento en producción. Luego trabajé como freelance, donde construí landings y aplicaciones con React, Angular, Tailwind CSS y otras tecnologías.",
+    "who_body3": "Actualmente me desempeño en PBS como Full Stack Developer, participando tanto en frontend como en backend con PHP y MySQL, con enfoque en escalabilidad, calidad de código y mejora continua.",
+    "how_title": "¿Cómo trabajo?",
+    "how_body": "Me gusta trabajar en equipo, construir rápido, medir resultados y optimizar constantemente los productos digitales. Priorizo una comunicación clara, entregas iterativas, código legible y mantenible."
+  },
+  "projects": {
+    "title": "Algunas cosas que construí",
+    "demo": "Demo",
+    "details": "Detalles",
+    "code": "Código",
+    "go_landing": "Ir a la landing",
+    "highlights": "Lo más destacado",
+    "close": "Cerrar",
+    "items": [
+      {
+        "title": "fAQ Solutions - Landing",
+        "description": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance.",
+        "highlights": []
+      },
+      {
+        "title": "My anime list (privado)",
+        "description": "Listado de animes con CRUD (alta/edición/baja), búsqueda, filtros y paginado. Persistencia en MySQL.",
+        "highlights": [
+          "CRUD completo (alta/edición/baja)",
+          "Búsqueda y filtros por toda la información de la tabla",
+          "Paginación e infinite-scroll",
+          "Capa de datos con MySQL (pool de conexiones)"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Conocimientos y herramientas",
+    "tools": "Herramientas",
+    "courses": "Cursos y Certificaciones"
+  },
+  "experience": {
+    "title": "Dónde apliqué lo que sé",
+    "items": [
+      {
+        "role": "Desarrollador Full Stack",
+        "company": "PBS - Telviso",
+        "period": "jun 2025 – Actualidad",
+        "bullets": [
+          "Desarrollo y mantenimiento de aplicaciones internas",
+          "Creación y optimización de CRUDs para la gestión eficiente de datos",
+          "Diseño y administración de bases de datos SQL"
+        ]
+      },
+      {
+        "role": "Desarrollador Full Stack (Freelance)",
+        "company": "fAQ Solutions",
+        "period": "2024 – Actualidad",
+        "bullets": [
+          "Diseño y desarrollo de landings y aplicaciones web a medida",
+          "Integraciones con APIs y despliegue en Vercel",
+          "Optimización de performance y SEO básico"
+        ]
+      },
+      {
+        "role": "Desarrollador Web",
+        "company": "Miii",
+        "period": "nov 2021 – dic 2023",
+        "bullets": [
+          "Desarrollo de landings y backoffice interno con React y Material UI",
+          "Integración de APIs y automatización de procesos",
+          "Gestión de deploys y mantenimiento en producción"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "¿Te interesó mi perfil?",
+    "lead": "Estoy abierto a nuevas oportunidades, podés contactarme directamente.",
+    "linkedin": "LinkedIn",
+    "email": "Contactar"
+  },
+  "footer": {
+    "made": "Hecho con React & Material UI"
+  }
+}

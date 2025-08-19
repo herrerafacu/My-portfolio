@@ -10,8 +10,11 @@ import {
   LinkedIn as LinkedInIcon,
   Mail as MailIcon,
 } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <Box
       component="footer"
@@ -49,8 +52,7 @@ export default function Footer() {
         </IconButton>
       </Stack>
       <Typography variant="body2" color="text.secondary">
-        © {new Date().getFullYear()} Facundo Herrera — Hecho con React &
-        Material UI
+        © {new Date().getFullYear()} Facundo Herrera — {t("footer.made")}
       </Typography>
     </Box>
   );

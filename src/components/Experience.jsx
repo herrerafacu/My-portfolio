@@ -1,26 +1,30 @@
+import { useTranslation } from "react-i18next";
 import {
   Box,
-  Stack,
-  Typography,
   Grid,
   Card,
   CardContent,
+  Typography,
   Divider,
+  Stack,
 } from "@mui/material";
 import { sectionSX, titleSX } from "../styles";
 
-export default function Experience({ experiences }) {
+export default function Experience() {
+  const { t } = useTranslation();
+  const items = t("experience.items", { returnObjects: true });
+
   return (
     <Box id="experience" sx={{ ...sectionSX }}>
       <Stack spacing={2} sx={{ width: "100%" }} alignItems="center">
-        <Typography sx={titleSX}>Dónde apliqué lo que sé</Typography>
+        <Typography sx={titleSX}>{t("experience.title")}</Typography>
         <Grid
           container
           spacing={2}
           justifyContent="center"
           sx={{ width: "100%" }}
         >
-          {experiences.map((e, idx) => (
+          {items.map((e, idx) => (
             <Grid item xs={12} md={6} key={idx}>
               <Card>
                 <CardContent>
@@ -33,7 +37,7 @@ export default function Experience({ experiences }) {
                   <Divider sx={{ my: 2 }} />
                   <Stack
                     component="ul"
-                    sx={{ pl: 2, m: 0, gap: 1, textAlign: "left" }}
+                    sx={{ pl: 2, m: 0, gap: 0.5, textAlign: "left" }}
                   >
                     {e.bullets.map((b, j) => (
                       <Typography key={j} component="li" variant="body2">

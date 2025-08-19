@@ -1,8 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { sectionSX, titleSX, leadSX } from "../styles";
 import { Work as WorkIcon } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export default function Aboutme() {
+  const { t } = useTranslation();
+
   return (
     <Box id="about" sx={{ ...sectionSX }}>
       <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="center">
@@ -14,51 +17,36 @@ export default function Aboutme() {
         >
           <WorkIcon color="primary" />
           <Typography variant="overline" color="primary">
-            SOBRE MÍ
+            {t("about.about_me")}
           </Typography>
         </Stack>
 
-        <Typography sx={titleSX}>Quién soy y cómo trabajo</Typography>
+        <Typography sx={titleSX}> {t("about.title")}</Typography>
 
         <Stack sx={{ width: "100%", maxWidth: { xs: 720, md: 900 } }}>
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
-            <strong>¿Quién soy?</strong>
+            <strong>{t("about.who_title")}</strong>
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
-            Soy <b>Desarrollador Full Stack</b> con foco en el <b>frontend</b>{" "}
-            utilizando
-            <b> React</b> y <b>Material UI</b>. Cuento con más de{" "}
-            <b>3 años de experiencia </b>
-            en el desarrollo de aplicaciones web, landings de alto rendimiento e
-            integraciones con APIs.
+            {t("about.who_body")}
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
-            En <b>Miiii</b> me encargué del desarrollo del <b>backoffice</b>{" "}
-            interno y de landings corporativos, además de gestionar{" "}
-            <i>deploys</i> y mantenimiento en producción. Luego trabajé como{" "}
-            <b>freelance</b>, donde construí landings y aplicaciones con
-            <b> React</b>, <b>Angular</b>, <b>Tailwind CSS</b> y otras
-            tecnologías.
+            {t("about.who_body2")}
+            s.
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 3 }}>
-            Actualmente me desempeño en <b>PBS</b> como{" "}
-            <b>Full Stack Developer</b>, participando tanto en frontend como en
-            backend con <b>PHP</b> y <b>MySQL</b>, con enfoque en escalabilidad,
-            calidad de código y mejora continua.
+            {t("about.who_body3")}
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 1.5 }}>
-            <strong>¿Cómo trabajo?</strong>
+            <strong> {t("about.how_title")}</strong>
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left" }}>
-            Me gusta trabajar en equipo, construir rápido, medir resultados y
-            optimizar constantemente los productos digitales. Priorizo una
-            comunicación clara, entregas iterativas, código legible y
-            mantenible.
+            {t("about.how_body")}
           </Typography>
         </Stack>
       </Stack>

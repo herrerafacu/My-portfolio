@@ -11,7 +11,7 @@ export const skillsByCategory = {
     "Vite",
   ],
   Backend: ["Node.js / Express", "PHP", "MySQL"],
-  Herramientas: ["Git / GitHub / Vercel", "Docker", "JIRA", "Postman"],
+  Tools: ["Git / GitHub / Vercel", "Docker", "JIRA", "Postman"],
 };
 
 export const skillsFlat = [
@@ -35,7 +35,7 @@ export const skillsFlat = [
 ];
 export const courses = [
   {
-    title: "Master en Frameworks JavaScript: React, Angular y Vue",
+    title: "Master Frameworks JavaScript: React, Angular y Vue",
     provider: "Udemy",
     year: 2021,
     url: "",

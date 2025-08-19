@@ -7,6 +7,8 @@ import {
 import { heroSX, heroTitleSX, leadSX } from "../styles";
 import { motion } from "framer-motion";
 import cvFacundoHerrera from "../assets/Curriculum Vitae Facundo Herrera PDF.pdf";
+import { useTranslation } from "react-i18next";
+
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.06 } },
@@ -17,6 +19,7 @@ const item = {
 };
 
 export default function Hero() {
+  const { t } = useTranslation();
   return (
     <Box id="home" sx={{ ...heroSX }}>
       <Stack
@@ -29,15 +32,14 @@ export default function Hero() {
       >
         <Chip
           icon={<RocketLaunchIcon />}
-          label="Disponible para nuevos proyectos"
+          label={t("hero.badge")}
           color="primary"
           variant="outlined"
           sx={{ fontWeight: 700 }}
         />
 
         <Typography sx={heroTitleSX}>
-          Desarrollo aplicaciones web rápidas, escalables y con gran experiencia
-          de usuario{" "}
+          {t("hero.title_prefix")}
           <Box
             component="span"
             sx={{
@@ -48,10 +50,7 @@ export default function Hero() {
           ></Box>
         </Typography>
 
-        <Typography sx={leadSX}>
-          Desarrollador Full Stack con foco en frontend (React y MUI). Me gusta
-          crear productos reales, con código limpio y resultados medibles.
-        </Typography>
+        <Typography sx={leadSX}>{t("hero.lead")}</Typography>
 
         <Stack
           direction="row"
@@ -66,7 +65,7 @@ export default function Hero() {
             variant="contained"
             endIcon={<OpenInNewIcon />}
           >
-            Ver proyectos
+            {t("hero.cta_projects")}
           </Button>
           <Button
             href={cvFacundoHerrera}
@@ -75,7 +74,7 @@ export default function Hero() {
             variant="outlined"
             startIcon={<DownloadIcon />}
           >
-            Descargar CV
+            {t("hero.cta_cv")}
           </Button>
         </Stack>
       </Stack>
