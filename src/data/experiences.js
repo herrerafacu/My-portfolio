@@ -4,9 +4,12 @@ export const experiences = [
     company: "PBS - Telviso",
     period: "jun.2025 – Actualidad",
     bullets: [
-      "Desarrollo y mantenimiento de aplicaciones internas",
-      "Creación y optimización de CRUDs para la gestión eficiente de datos",
-      "Diseño y administración de bases de datos SQL",
+      "Desarrollo y mantenimiento de sistemas internos",
+      "Creación de ABMs, formularios y dashboards.",
+      "Consultas SQL complejas, filtros, paginación, optimización.",
+      "Integración con APIs internas y módulos legacy.",
+      "Creación de ABMs, formularios y dashboards.",
+      "Diseño de interfaces funcionales en Vue y JS.",
     ],
   },
   {

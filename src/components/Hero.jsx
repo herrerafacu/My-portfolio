@@ -6,7 +6,7 @@ import {
 } from "@mui/icons-material";
 import { heroSX, heroTitleSX, leadSX } from "../styles";
 import { motion } from "framer-motion";
-import cvFacundoHerrera from "../assets/Curriculum Vitae Facundo Herrera PDF.pdf";
+import cvFacundoHerrera from "../assets/Currículum Vitae Facundo Herrera.pdf";
 import { useTranslation } from "react-i18next";
 
 const container = {
