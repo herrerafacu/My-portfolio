@@ -3,8 +3,10 @@ import tableImage from "../assets/Table.png";
 import tableFilterImage from "../assets/Table filter.png";
 import deleteImage from "../assets/Eliminar.png";
 import editImage from "../assets/Editar.png";
-import newAnimeImage from "../assets/Nuevo.png";
 import baseImage from "../assets/BaseDatos.png";
+import galleryImage from "../assets/Galeria.png";
+import nuevoImage from "../assets/Nuevo.png";
+
 export const projects = [
   {
     title: "fAQ Solutions - Landing",
@@ -28,8 +30,9 @@ export const projects = [
       tableFilterImage,
       deleteImage,
       editImage,
-      newAnimeImage,
       baseImage,
+      galleryImage,
+      nuevoImage,
     ],
     highlights: [
       "CRUD completo (alta/edición/baja)",

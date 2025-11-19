@@ -1,8 +1,8 @@
 export const skillsByCategory = {
   Frontend: [
     "React",
-    "Angular",
     "Vue",
+    "Angular",
     "TypeScript",
     "JavaScript",
     "Material UI",
@@ -10,8 +10,8 @@ export const skillsByCategory = {
     "Redux.js",
     "Vite",
   ],
-  Backend: ["Node.js / Express", "PHP", "MySQL"],
-  Tools: ["Git / GitHub / Vercel", "Docker", "JIRA", "Postman"],
+  Backend: ["PHP", "MySQL", "Node.js / Express"],
+  DevOps: ["GitHub", "Docker", "JIRA", "Postman", "Vercel"],
 };
 
 export const skillsFlat = [

@@ -9,7 +9,7 @@
   "hero": {
     "badge": "Disponible para nuevos proyectos",
     "title_prefix": "Desarrollo aplicaciones web rápidas, escalables y con gran experiencia de usuario",
-    "lead": "Desarrollador Full Stack con foco en frontend (React y MUI). Me gusta crear productos reales, con código limpio y resultados medibles.",
+    "lead": "Experiencia real construyendo sistemas internos complejos, dashboards, ABMs, integración con APIs y mantenimiento en producción.",
     "cta_projects": "Ver proyectos",
     "cta_cv": "Descargar CV"
   },
@@ -17,14 +17,14 @@
     "about_me": "Sobre mi",
     "title": "Quién soy y cómo trabajo",
     "who_title": "¿Quién soy?",
-    "who_body": "Soy Desarrollador Full Stack con foco en el frontend utilizando React y Material UI. Cuento con más de 3 años de experiencia en el desarrollo de aplicaciones web, landings de alto rendimiento e integraciones con APIs.",
+    "who_body": "Soy Desarrollador Full Stack con foco en frontend (React, Vue y Material UI) y más de 4 años de experiencia construyendo aplicaciones web, sistemas internos, ABMs, dashboards e integraciones con APIs.",
     "who_body2": "En Miiii me encargué del desarrollo del backoffice interno y de landings corporativos, además de gestionar deploys y mantenimiento en producción. Luego trabajé como freelance, donde construí landings y aplicaciones con React, Angular, Tailwind CSS y otras tecnologías.",
-    "who_body3": "Actualmente me desempeño en PBS como Full Stack Developer, participando tanto en frontend como en backend con PHP y MySQL, con enfoque en escalabilidad, calidad de código y mejora continua.",
+    "who_body3": "Actualmente trabajo en PBS para Telviso, participando en el desarrollo, mantenimiento y mejora de sistemas internos con PHP, MySQL, Vue y JS.                                                Desarrollo nuevas funcionalidades, optimizo módulos existentes, creo ABMs completos, integro APIs internas, trabajo con contenedores Docker y mantengo sistemas con alto volumen de datos en producción.           También participo en la resolución de incidencias, mejora de performance, refactor de código legacy y creación de interfaces funcionales utilizadas a diario por cientos de usuarios internos.",
     "how_title": "¿Cómo trabajo?",
     "how_body": "Me gusta trabajar en equipo, construir rápido, medir resultados y optimizar constantemente los productos digitales. Priorizo una comunicación clara, entregas iterativas, código legible y mantenible."
   },
   "projects": {
-    "title": "Algunas cosas que construí",
+    "title": "Proyectos personales",
     "demo": "Demo",
     "details": "Detalles",
     "code": "Código",
@@ -62,9 +62,12 @@
         "company": "PBS - Telviso",
         "period": "jun 2025 – Actualidad",
         "bullets": [
-          "Desarrollo y mantenimiento de aplicaciones internas",
-          "Creación y optimización de CRUDs para la gestión eficiente de datos",
-          "Diseño y administración de bases de datos SQL"
+          "Desarrollo y mantenimiento de sistemas internos",
+          "Creación de ABMs, formularios y dashboards.",
+          "Consultas SQL complejas, filtros, paginación, optimización.",
+          "Integración con APIs internas y módulos legacy.",
+          "Creación de ABMs, formularios y dashboards.",
+          "Diseño de interfaces funcionales en Vue y JS."
         ]
       },
       {
@@ -72,9 +75,9 @@
         "company": "fAQ Solutions",
         "period": "2024 – Actualidad",
         "bullets": [
-          "Diseño y desarrollo de landings y aplicaciones web a medida",
-          "Integraciones con APIs y despliegue en Vercel",
-          "Optimización de performance y SEO básico"
+          "Desarrollo de landings y aplicaciones web a medida",
+          "Integración con APIs y despliegue en Vercel",
+          "Optimización de performance y SEO"
         ]
       },
       {
@@ -82,9 +85,10 @@
         "company": "Miii",
         "period": "nov 2021 – dic 2023",
         "bullets": [
-          "Desarrollo de landings y backoffice interno con React y Material UI",
+          "Desarrollo del backoffice interno con React y Material UI",
           "Integración de APIs y automatización de procesos",
-          "Gestión de deploys y mantenimiento en producción"
+          "Deploys, monitoreo y mantenimiento en producción",
+          "Colaboración con áreas internas para resolver incidencias"
         ]
       }
     ]

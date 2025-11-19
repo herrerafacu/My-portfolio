@@ -23,7 +23,9 @@ export default function Projects({ projects }) {
   const [openDetails, setOpenDetails] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const { t } = useTranslation();
+  const [openImageZoom, setOpenImageZoom] = useState(false);
 
+  const [zoomSrc, setZoomSrc] = useState(null);
   const i18nItems = t("projects.items", { returnObjects: true }) || [];
 
   const mergedProjects = useMemo(() => {
@@ -50,6 +52,15 @@ export default function Projects({ projects }) {
     setActiveProject(null);
   };
 
+  const handleOpenZoom = (src) => {
+    setZoomSrc(src);
+    setOpenImageZoom(true);
+  };
+
+  const handleCloseZoom = () => {
+    setOpenImageZoom(false);
+    setZoomSrc(null);
+  };
   return (
     <>
       <Box id="projects" sx={{ ...sectionSX }}>
@@ -147,28 +158,36 @@ export default function Projects({ projects }) {
                 {activeProject.description}
               </Typography>
 
+              {/* Galería clickeable */}
               <Stack
                 direction="row"
-                spacing={1}
+                spacing={2}
                 useFlexGap
                 flexWrap="wrap"
-                sx={{ mb: 2 }}
+                sx={{ mb: 3, justifyContent: "center" }}
               >
                 {activeProject.gallery?.map((src, i) => (
                   <Box
                     key={i}
                     sx={{
-                      width: { xs: "100%", sm: "calc(50% - 4px)" },
+                      width: { xs: "100%", sm: "48%" }, // dos columnas en desktop
                       borderRadius: 2,
                       overflow: "hidden",
+                      cursor: "pointer",
+                      boxShadow: 3,
+                      bgcolor: "background.paper",
+                      "&:hover": { opacity: 0.9 },
+                      "& img": {
+                        width: "100%",
+                        height: "100%",
+                        maxHeight: 320,
+                        objectFit: "cover",
+                        display: "block",
+                      },
                     }}
+                    onClick={() => handleOpenZoom(src)}
                   >
-                    <Box
-                      component="img"
-                      src={src}
-                      alt={`cap-${i}`}
-                      sx={{ width: "100%", display: "block" }}
-                    />
+                    <Box component="img" src={src} alt={`cap-${i}`} />
                   </Box>
                 ))}
               </Stack>
@@ -207,6 +226,29 @@ export default function Projects({ projects }) {
             </DialogActions>
           </>
         )}
+      </Dialog>
+
+      {/* Visor de imagen en grande */}
+      <Dialog
+        open={openImageZoom}
+        onClose={handleCloseZoom}
+        maxWidth="lg"
+        fullWidth
+      >
+        <DialogContent sx={{ p: 0 }}>
+          {zoomSrc && (
+            <Box
+              component="img"
+              src={zoomSrc}
+              alt="zoom"
+              sx={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          )}
+        </DialogContent>
       </Dialog>
     </>
   );

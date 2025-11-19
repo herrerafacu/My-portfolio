@@ -1,55 +1,56 @@
 {
   "nav": {
-    "about": "About",
+    "about": "About me",
     "projects": "Projects",
     "skills": "Skills",
     "experience": "Experience",
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Open to new projects",
-    "title_prefix": "I develop fast, scalable web applications with great user experience.",
-    "lead": "Full-stack developer with a focus on front-end (React and MUI). I enjoy building real products with clean code and measurable results.",
+    "badge": "Available for new projects",
+    "title_prefix": "I build fast, scalable web applications with great user experience",
+    "lead": "Real-world experience developing complex internal systems, dashboards, CRUDs, API integrations and production-level maintenance.",
     "cta_projects": "View projects",
     "cta_cv": "Download CV"
   },
   "about": {
     "about_me": "About me",
-    "title": "Who I am & how I work",
+    "title": "Who I am and how I work",
     "who_title": "Who am I?",
-    "who_body": "I'm a full-stack developer focused on the frontend using React and Material UI. I have over three years of experience developing web applications, high-performance landing pages, and API integrations.",
-    "who_body2": "At Miiii, I was responsible for developing the internal back office and corporate landing pages, as well as managing deployments and production maintenance. I then worked as a freelancer, building landing pages and applications with React, Angular, Tailwind CSS, and other technologies.",
-    "who_body3": "I currently work at PBS as a Full Stack Developer, working in both the frontend and backend with PHP and MySQL, with a focus on scalability, code quality, and continuous improvement.",
+    "who_body": "I am a Full Stack Developer focused on frontend (React, Vue and Material UI) with over 4 years of experience building web applications, internal systems, CRUDs, dashboards and API integrations.",
+    "who_body2": "At Miii I worked on the development of the internal backoffice and corporate landings, handling deploys and production maintenance. Later, as a freelance developer, I built landings and applications using React, Angular, Tailwind CSS and other technologies.",
+    "who_body3": "Currently I work at PBS for Telviso, contributing to the development, maintenance and improvement of internal systems using PHP, MySQL, Vue and JS. I build new features, optimize existing modules, create complete CRUDs, integrate internal APIs, work with Docker containers and maintain systems with high-volume production data. I also participate in incident resolution, performance improvements, legacy code refactoring and the creation of functional interfaces used daily by hundreds of internal users.",
     "how_title": "How I work",
-    "how_body": "I like to work in teams, build quickly, measure results, and constantly optimize digital products. I prioritize clear communication, iterative deliveries, and readable and maintainable code."
+    "how_body": "I enjoy working as a team, building fast, measuring results and constantly optimizing digital products. I prioritize clear communication, iterative deliveries and clean, maintainable code."
   },
   "projects": {
-    "title": "Some things I've built",
+    "title": "Personal projects",
+    "demo": "Demo",
     "details": "Details",
+    "code": "Code",
     "go_landing": "Go to landing",
     "highlights": "Highlights",
     "close": "Close",
     "items": [
       {
         "title": "fAQ Solutions - Landing",
-        "description": "Landing page focused on conversion: carousel, contact form, responsive design and performance.",
+        "description": "Landing page focused on conversion: carousel, form, responsive design and performance.",
         "highlights": []
       },
       {
         "title": "My anime list (private)",
-        "description": "Anime listing app with full CRUD (create/edit/delete), search, filters and pagination. Data stored in MySQL.",
+        "description": "Anime list with full CRUD (create/edit/delete), search, filters and pagination. MySQL persistence.",
         "highlights": [
           "Full CRUD (create/edit/delete)",
-          "Search and filters across all table data",
-          "Pagination and infinite-scroll",
-          "Data layer with MySQL (connection pool)"
+          "Search and filters across all table fields",
+          "Pagination and infinite scroll",
+          "Data layer using MySQL (connection pool)"
         ]
       }
     ]
   },
-
   "skills": {
-    "title": "Knowledge and tools",
+    "title": "Skills & tools",
     "tools": "Tools",
     "courses": "Courses & Certifications"
   },
@@ -61,9 +62,12 @@
         "company": "PBS - Telviso",
         "period": "Jun 2025 – Present",
         "bullets": [
-          "Development and maintenance of internal applications",
-          "Creation and optimization of CRUDs for efficient data management",
-          "Design and administration of SQL databases"
+          "Development and maintenance of internal systems",
+          "Creation of CRUDs, forms and dashboards",
+          "Complex SQL queries, filters, pagination and optimization",
+          "Integration with internal APIs and legacy modules",
+          "Creation of CRUDs, forms and dashboards",
+          "Design of functional interfaces using Vue and JS"
         ]
       },
       {
@@ -71,7 +75,7 @@
         "company": "fAQ Solutions",
         "period": "2024 – Present",
         "bullets": [
-          "Design and development of custom landing pages and web applications",
+          "Development of custom landings and web applications",
           "API integrations and deployment on Vercel",
           "Performance optimization and basic SEO"
         ]
@@ -81,16 +85,17 @@
         "company": "Miii",
         "period": "Nov 2021 – Dec 2023",
         "bullets": [
-          "Development of landing pages and internal back office with React and Material UI",
-          "API integration and process automation",
-          "Deployment management and production maintenance"
+          "Development of the internal backoffice using React and Material UI",
+          "API integrations and process automation",
+          "Deploys, monitoring and production maintenance",
+          "Collaboration with internal teams to solve incidents and define improvements"
         ]
       }
     ]
   },
   "contact": {
-    "title": "You were interested in my profile?",
-    "lead": "I am open to new opportunities, you can contact me directly.",
+    "title": "Interested in my profile?",
+    "lead": "I'm open to new opportunities — feel free to contact me directly.",
     "linkedin": "LinkedIn",
     "email": "Contact"
   },
