@@ -4,19 +4,17 @@ import {
   Download as DownloadIcon,
   RocketLaunch as RocketLaunchIcon,
 } from "@mui/icons-material";
-import { heroSX, heroTitleSX, leadSX } from "../styles";
-import { motion } from "framer-motion";
+import {
+  heroActionsSX,
+  heroBadgeSX,
+  heroButtonSX,
+  heroContentSX,
+  heroSX,
+  heroTitleSX,
+  leadSX,
+} from "../styles";
 import cvFacundoHerrera from "../assets/Currículum Vitae Facundo Herrera.pdf";
 import { useTranslation } from "react-i18next";
-
-const container = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.06 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -25,54 +23,47 @@ export default function Hero() {
       <Stack
         spacing={3}
         alignItems="center"
-        component={motion.div}
-        variants={container}
-        initial="hidden"
-        animate="show"
+        sx={heroContentSX}
       >
         <Chip
           icon={<RocketLaunchIcon />}
           label={t("hero.badge")}
           color="primary"
           variant="outlined"
-          sx={{ fontWeight: 700 }}
+          sx={heroBadgeSX}
         />
 
-        <Typography sx={heroTitleSX}>
+        <Typography component="h1" sx={heroTitleSX}>
           {t("hero.title_prefix")}
-          <Box
-            component="span"
-            sx={{
-              background: "linear-gradient(90deg,#1976d2,#00bcd4)",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-            }}
-          ></Box>
         </Typography>
 
         <Typography sx={leadSX}>{t("hero.lead")}</Typography>
 
         <Stack
-          direction="row"
+          direction={{ xs: "column", sm: "row" }}
           spacing={2}
-          component={motion.div}
-          variants={item}
           justifyContent="center"
+          alignItems="center"
+          useFlexGap
+          flexWrap="wrap"
+          sx={heroActionsSX}
         >
           <Button
             href="#projects"
             size="large"
             variant="contained"
             endIcon={<OpenInNewIcon />}
+            sx={heroButtonSX}
           >
             {t("hero.cta_projects")}
           </Button>
           <Button
             href={cvFacundoHerrera}
-            download={cvFacundoHerrera}
+            download
             size="large"
             variant="outlined"
             startIcon={<DownloadIcon />}
+            sx={heroButtonSX}
           >
             {t("hero.cta_cv")}
           </Button>

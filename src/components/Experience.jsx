@@ -12,21 +12,24 @@ import { sectionSX, titleSX } from "../styles";
 
 export default function Experience() {
   const { t } = useTranslation();
-  const items = t("experience.items", { returnObjects: true });
+  const translatedItems = t("experience.items", { returnObjects: true });
+  const items = Array.isArray(translatedItems) ? translatedItems : [];
 
   return (
-    <Box id="experience" sx={{ ...sectionSX }}>
+    <Box id="experience" component="section" sx={{ ...sectionSX }}>
       <Stack spacing={2} sx={{ width: "100%" }} alignItems="center">
-        <Typography sx={titleSX}>{t("experience.title")}</Typography>
+        <Typography component="h2" sx={titleSX}>
+          {t("experience.title")}
+        </Typography>
         <Grid
           container
           spacing={2}
           justifyContent="center"
           sx={{ width: "100%" }}
         >
-          {items.map((e, idx) => (
-            <Grid item xs={12} md={6} key={idx}>
-              <Card>
+          {items.map((e) => (
+            <Grid item xs={12} md={6} key={`${e.company}-${e.role}`}>
+              <Card sx={{ height: "100%" }}>
                 <CardContent>
                   <Typography variant="h6" sx={{ fontWeight: 700 }}>
                     {e.role}

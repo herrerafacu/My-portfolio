@@ -3,11 +3,11 @@ import { sectionSX, titleSX, leadSX } from "../styles";
 import { Work as WorkIcon } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
 
-export default function Aboutme() {
+export default function AboutMe() {
   const { t } = useTranslation();
 
   return (
-    <Box id="about" sx={{ ...sectionSX }}>
+    <Box id="about" component="section" sx={{ ...sectionSX }}>
       <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="center">
         <Stack
           direction="row"
@@ -21,7 +21,9 @@ export default function Aboutme() {
           </Typography>
         </Stack>
 
-        <Typography sx={titleSX}> {t("about.title")}</Typography>
+        <Typography component="h2" sx={titleSX}>
+          {t("about.title")}
+        </Typography>
 
         <Stack sx={{ width: "100%", maxWidth: { xs: 720, md: 900 } }}>
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
@@ -34,7 +36,6 @@ export default function Aboutme() {
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 2 }}>
             {t("about.who_body2")}
-            s.
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 3 }}>
@@ -42,7 +43,7 @@ export default function Aboutme() {
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left", mb: 1.5 }}>
-            <strong> {t("about.how_title")}</strong>
+            <strong>{t("about.how_title")}</strong>
           </Typography>
 
           <Typography sx={{ ...leadSX, textAlign: "left" }}>

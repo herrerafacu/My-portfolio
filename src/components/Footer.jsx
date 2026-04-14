@@ -1,10 +1,4 @@
-import {
-  Box,
-  Stack,
-  IconButton,
-  Typography,
-  Link as MLink,
-} from "@mui/material";
+import { Box, Stack, IconButton, Typography, Link as MLink } from "@mui/material";
 import {
   GitHub as GitHubIcon,
   LinkedIn as LinkedInIcon,
@@ -32,6 +26,9 @@ export default function Footer() {
           component={MLink}
           href="https://github.com/herrerafacu"
           target="_blank"
+          rel="noreferrer"
+          aria-label={t("footer.github")}
+          sx={{ borderRadius: "8px" }}
         >
           <GitHubIcon />
         </IconButton>
@@ -40,6 +37,9 @@ export default function Footer() {
           component={MLink}
           href="https://www.linkedin.com/in/facundo-herrera-289a111b9/"
           target="_blank"
+          rel="noreferrer"
+          aria-label={t("footer.linkedin")}
+          sx={{ borderRadius: "8px" }}
         >
           <LinkedInIcon />
         </IconButton>
@@ -47,12 +47,14 @@ export default function Footer() {
           color="inherit"
           component={MLink}
           href="mailto:facu.h_007@hotmail.com"
+          aria-label={t("footer.email")}
+          sx={{ borderRadius: "8px" }}
         >
           <MailIcon />
         </IconButton>
       </Stack>
       <Typography variant="body2" color="text.secondary">
-        © {new Date().getFullYear()} Facundo Herrera — {t("footer.made")}
+        {new Date().getFullYear()} Facundo Herrera - {t("footer.made")}
       </Typography>
     </Box>
   );

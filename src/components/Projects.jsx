@@ -9,63 +9,86 @@ import {
   Chip,
   Button,
   Stack,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
 } from "@mui/material";
 import { OpenInNew as OpenInNewIcon } from "@mui/icons-material";
-import { sectionSX, titleSX } from "../styles";
-import { useState, useMemo } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { sectionSX, titleSX } from "../styles";
+import {
+  asRecord,
+  hasProjectDetails,
+  localizeDeployment,
+  localizeStructuredItems,
+  localizeTechStack,
+} from "../utils/projectLocalization.js";
+
+const ProjectDetailsDialog = lazy(() => import("./ProjectDetailsDialog.jsx"));
 
 export default function Projects({ projects }) {
   const [openDetails, setOpenDetails] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const { t } = useTranslation();
-  const [openImageZoom, setOpenImageZoom] = useState(false);
-
-  const [zoomSrc, setZoomSrc] = useState(null);
-  const i18nItems = t("projects.items", { returnObjects: true }) || [];
 
   const mergedProjects = useMemo(() => {
-    return projects.map((p, idx) => {
-      const text = i18nItems[idx] || {};
+    return projects.map((project) => {
+      const localized = asRecord(
+        project.i18nKey
+          ? t(`projects.items.${project.i18nKey}`, {
+              returnObjects: true,
+              defaultValue: {},
+            })
+          : {}
+      );
+      const stack = localizeTechStack(
+        project.techStack ?? project.stack,
+        localized.techStack
+      );
+
       return {
-        ...p,
-        title: text.title ?? p.title,
-        description: text.description ?? p.description,
-        highlights:
-          Array.isArray(text.highlights) && text.highlights.length
-            ? text.highlights
-            : p.highlights,
+        ...project,
+        title: localized.title ?? project.title,
+        subtitle: localized.subtitle ?? project.subtitle,
+        description: localized.description ?? project.description,
+        shortDescription:
+          localized.shortDescription ??
+          project.shortDescription ??
+          localized.description ??
+          project.description,
+        stack,
+        techStack: stack,
+        skills: localizeStructuredItems(project.skills, localized.skills),
+        screenshots: localizeStructuredItems(
+          project.screenshots,
+          localized.screenshots
+        ),
+        highlights: localizeStructuredItems(
+          project.highlights,
+          localized.highlights
+        ),
+        security: localizeStructuredItems(project.security, localized.security),
+        deployment: localizeDeployment(project.deployment, localized.deployment),
+        liveUrl: project.liveUrl,
       };
     });
-  }, [projects, i18nItems]);
+  }, [projects, t]);
 
-  const handleOpenDetails = (p) => {
-    setActiveProject(p);
+  const handleOpenDetails = (project) => {
+    setActiveProject(project);
     setOpenDetails(true);
   };
+
   const handleCloseDetails = () => {
     setOpenDetails(false);
     setActiveProject(null);
   };
 
-  const handleOpenZoom = (src) => {
-    setZoomSrc(src);
-    setOpenImageZoom(true);
-  };
-
-  const handleCloseZoom = () => {
-    setOpenImageZoom(false);
-    setZoomSrc(null);
-  };
   return (
     <>
-      <Box id="projects" sx={{ ...sectionSX }}>
+      <Box id="projects" component="section" sx={{ ...sectionSX }}>
         <Stack spacing={3} sx={{ width: "100%" }} alignItems="center">
-          <Typography sx={titleSX}>{t("projects.title")}</Typography>
+          <Typography component="h2" sx={titleSX}>
+            {t("projects.title")}
+          </Typography>
 
           <Grid
             container
@@ -73,63 +96,92 @@ export default function Projects({ projects }) {
             justifyContent="center"
             sx={{ width: "100%", mx: 0 }}
           >
-            {mergedProjects.map((p, i) => (
-              <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
+            {mergedProjects.map((project) => (
+              <Grid item key={project.id} xs={12} sm={6} md={4} lg={3}>
                 <Card
                   sx={{
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
+                    borderRadius: "8px",
+                    overflow: "hidden",
                   }}
                 >
                   <CardMedia
                     component="img"
                     height="200"
-                    image={p.image}
-                    alt={p.title}
+                    image={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    sx={{ objectFit: "cover" }}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                      {p.title}
+                    <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                      {project.title}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ mt: 1 }}
+                      sx={{ mt: 1, lineHeight: 1.65 }}
                     >
-                      {p.description}
+                      {project.shortDescription}
                     </Typography>
                     <Stack
                       direction="row"
                       spacing={1}
-                      sx={{ mt: 1, flexWrap: "wrap", justifyContent: "center" }}
+                      useFlexGap
+                      flexWrap="wrap"
+                      sx={{ mt: 1.5, justifyContent: "center" }}
                     >
-                      {p.stack.map((s) => (
+                      {project.stack.map((item) => (
                         <Chip
-                          key={s}
+                          key={item}
                           size="small"
-                          label={s}
+                          label={item}
                           variant="outlined"
+                          sx={{ borderRadius: "6px" }}
                         />
                       ))}
                     </Stack>
                   </CardContent>
-                  <CardActions sx={{ justifyContent: "center", gap: 1 }}>
-                    {p.link && (
+                  <CardActions
+                    sx={{
+                      justifyContent: "center",
+                      gap: 1,
+                      pb: 2,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    {project.link && (
                       <Button
                         size="small"
                         endIcon={<OpenInNewIcon />}
-                        href={p.link}
+                        href={project.link}
                         target="_blank"
+                        rel="noreferrer"
+                        sx={{ borderRadius: "6px" }}
                       >
                         {t("projects.go_landing")}
                       </Button>
                     )}
-                    {p.gallery && (
+                    {project.liveUrl && (
+                      <Button
+                        size="small"
+                        endIcon={<OpenInNewIcon />}
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        sx={{ borderRadius: "6px" }}
+                      >
+                        {t("projects.view_live_app")}
+                      </Button>
+                    )}
+                    {hasProjectDetails(project) && (
                       <Button
                         size="small"
                         variant="contained"
-                        onClick={() => handleOpenDetails(p)}
+                        onClick={() => handleOpenDetails(project)}
+                        sx={{ borderRadius: "6px" }}
                       >
                         {t("projects.details")}
                       </Button>
@@ -142,114 +194,15 @@ export default function Projects({ projects }) {
         </Stack>
       </Box>
 
-      <Dialog
-        open={openDetails}
-        onClose={handleCloseDetails}
-        maxWidth="md"
-        fullWidth
-      >
-        {activeProject && (
-          <>
-            <DialogTitle sx={{ fontWeight: 800 }}>
-              {activeProject.title}
-            </DialogTitle>
-            <DialogContent dividers>
-              <Typography color="text.secondary" sx={{ mb: 2 }}>
-                {activeProject.description}
-              </Typography>
-
-              {/* Galería clickeable */}
-              <Stack
-                direction="row"
-                spacing={2}
-                useFlexGap
-                flexWrap="wrap"
-                sx={{ mb: 3, justifyContent: "center" }}
-              >
-                {activeProject.gallery?.map((src, i) => (
-                  <Box
-                    key={i}
-                    sx={{
-                      width: { xs: "100%", sm: "48%" }, // dos columnas en desktop
-                      borderRadius: 2,
-                      overflow: "hidden",
-                      cursor: "pointer",
-                      boxShadow: 3,
-                      bgcolor: "background.paper",
-                      "&:hover": { opacity: 0.9 },
-                      "& img": {
-                        width: "100%",
-                        height: "100%",
-                        maxHeight: 320,
-                        objectFit: "cover",
-                        display: "block",
-                      },
-                    }}
-                    onClick={() => handleOpenZoom(src)}
-                  >
-                    <Box component="img" src={src} alt={`cap-${i}`} />
-                  </Box>
-                ))}
-              </Stack>
-
-              {activeProject.highlights?.length > 0 && (
-                <>
-                  <Typography sx={{ fontWeight: 700, mb: 1 }}>
-                    {t("projects.highlights")}
-                  </Typography>
-                  <Stack component="ul" sx={{ pl: 2, m: 0, gap: 0.5 }}>
-                    {activeProject.highlights.map((h, i) => (
-                      <Typography key={i} component="li" variant="body2">
-                        {h}
-                      </Typography>
-                    ))}
-                  </Stack>
-                </>
-              )}
-
-              <Stack
-                direction="row"
-                spacing={1}
-                useFlexGap
-                flexWrap="wrap"
-                sx={{ mt: 2 }}
-              >
-                {activeProject.stack?.map((s) => (
-                  <Chip key={s} size="small" label={s} variant="outlined" />
-                ))}
-              </Stack>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleCloseDetails}>
-                {t("projects.close")}
-              </Button>
-            </DialogActions>
-          </>
-        )}
-      </Dialog>
-
-      {/* Visor de imagen en grande */}
-      <Dialog
-        open={openImageZoom}
-        onClose={handleCloseZoom}
-        maxWidth="lg"
-        fullWidth
-      >
-        <DialogContent sx={{ p: 0 }}>
-          {zoomSrc && (
-            <Box
-              component="img"
-              src={zoomSrc}
-              alt="zoom"
-              sx={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-              }}
-            />
-          )}
-        </DialogContent>
-      </Dialog>
+      {activeProject && (
+        <Suspense fallback={null}>
+          <ProjectDetailsDialog
+            open={openDetails}
+            project={activeProject}
+            onClose={handleCloseDetails}
+          />
+        </Suspense>
+      )}
     </>
   );
 }

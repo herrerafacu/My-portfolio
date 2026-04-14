@@ -11,7 +11,7 @@ export const buildTheme = (mode) =>
         paper: mode === "dark" ? "#0f172a" : "#ffffff",
       },
     },
-    shape: { borderRadius: 14 },
+    shape: { borderRadius: 8 },
     typography: {
       fontFamily: "Inter, Roboto, system-ui, -apple-system, Segoe UI, Arial",
       button: { textTransform: "none", fontWeight: 700 },

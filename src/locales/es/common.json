@@ -4,7 +4,17 @@
     "projects": "Proyectos",
     "skills": "Habilidades",
     "experience": "Experiencia",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "menu": "Menú",
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "primary_navigation": "Navegación principal",
+    "mobile_navigation": "Navegación móvil",
+    "switch_to_english": "Cambiar a inglés",
+    "switch_to_spanish": "Cambiar a español",
+    "toggle_theme": "Cambiar tema",
+    "enable_dark_mode": "Activar modo oscuro",
+    "enable_light_mode": "Activar modo claro"
   },
   "hero": {
     "badge": "Disponible para nuevos proyectos",
@@ -13,13 +23,20 @@
     "cta_projects": "Ver proyectos",
     "cta_cv": "Descargar CV"
   },
+  "seo": {
+    "title": "Facundo Herrera — Desarrollador Fullstack",
+    "description": "Desarrollador Fullstack con experiencia en React, Node.js y MySQL. Desarrollo de aplicaciones web, dashboards e integración con APIs.",
+    "og_description": "Aplicaciones web, dashboards y sistemas fullstack con React y Node.",
+    "image_alt": "Facundo Herrera, Desarrollador Fullstack",
+    "locale": "es_AR"
+  },
   "about": {
-    "about_me": "Sobre mi",
+    "about_me": "Sobre mí",
     "title": "Quién soy y cómo trabajo",
     "who_title": "¿Quién soy?",
     "who_body": "Soy Desarrollador Full Stack con foco en frontend (React, Vue y Material UI) y más de 4 años de experiencia construyendo aplicaciones web, sistemas internos, ABMs, dashboards e integraciones con APIs.",
     "who_body2": "En Miiii me encargué del desarrollo del backoffice interno y de landings corporativos, además de gestionar deploys y mantenimiento en producción. Luego trabajé como freelance, donde construí landings y aplicaciones con React, Angular, Tailwind CSS y otras tecnologías.",
-    "who_body3": "Actualmente trabajo en PBS para Telviso, participando en el desarrollo, mantenimiento y mejora de sistemas internos con PHP, MySQL, Vue y JS.                                                Desarrollo nuevas funcionalidades, optimizo módulos existentes, creo ABMs completos, integro APIs internas, trabajo con contenedores Docker y mantengo sistemas con alto volumen de datos en producción.           También participo en la resolución de incidencias, mejora de performance, refactor de código legacy y creación de interfaces funcionales utilizadas a diario por cientos de usuarios internos.",
+    "who_body3": "Tambien trabajé en PBS para Telviso, participando en el desarrollo, mantenimiento y mejora de sistemas internos con PHP, MySQL, Vue y JS. Desarrollo nuevas funcionalidades, optimizo módulos existentes, creo ABMs completos, integro APIs internas, trabajo con contenedores Docker y mantengo sistemas con alto volumen de datos en producción. También participé en la resolución de incidencias, mejora de performance, refactor de código legacy y creación de interfaces funcionales utilizadas a diario por cientos de usuarios internos.",
     "how_title": "¿Cómo trabajo?",
     "how_body": "Me gusta trabajar en equipo, construir rápido, medir resultados y optimizar constantemente los productos digitales. Priorizo una comunicación clara, entregas iterativas, código legible y mantenible."
   },
@@ -29,30 +46,206 @@
     "details": "Detalles",
     "code": "Código",
     "go_landing": "Ir a la landing",
+    "view_live_app": "Ver aplicación",
     "highlights": "Lo más destacado",
     "close": "Cerrar",
-    "items": [
-      {
+    "modal": {
+      "case_study": "Producto fullstack",
+      "overview": "Presentación",
+      "key_capabilities": "Capacidades clave",
+      "modules": "Módulos y capturas",
+      "featured_features": "Funcionalidades destacadas",
+      "tech_stack": "Stack técnico",
+      "security": "Seguridad",
+      "deployment": "Deployment",
+      "live_access": "Acceso al proyecto",
+      "view_live_app": "Ver aplicación",
+      "live_app_intro": "Podés probar la aplicación en producción:",
+      "live_app_aria": "Abrir {{title}} en producción",
+      "open_preview": "Ampliar captura",
+      "previous_screenshot": "Captura anterior",
+      "next_screenshot": "Captura siguiente",
+      "close_preview": "Cerrar preview",
+      "screenshot_counter": "{{current}} de {{total}}",
+      "screenshot_alt": "Captura {{current}} de {{title}}"
+    },
+    "items": {
+      "faqSolutions": {
         "title": "fAQ Solutions - Landing",
-        "description": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance.",
-        "highlights": []
+        "shortDescription": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance.",
+        "description": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance."
       },
-      {
-        "title": "My anime list (privado)",
-        "description": "Listado de animes con CRUD (alta/edición/baja), búsqueda, filtros y paginado. Persistencia en MySQL.",
-        "highlights": [
-          "CRUD completo (alta/edición/baja)",
-          "Búsqueda y filtros por toda la información de la tabla",
-          "Paginación e infinite-scroll",
-          "Capa de datos con MySQL (pool de conexiones)"
-        ]
+      "pandapedia": {
+        "title": "PandaPedia",
+        "subtitle": "Plataforma fullstack para gestionar, explorar y analizar contenido multimedia",
+        "shortDescription": "Producto fullstack para gestionar una biblioteca multimedia con exploración, métricas y persistencia en MySQL.",
+        "description": "PandaPedia centraliza una biblioteca personal de contenido multimedia, combinando gestión, exploración, filtros y métricas en una experiencia de producto completa. El proyecto integra frontend, backend, base de datos y APIs externas con una arquitectura pensada para crecer.",
+        "techStack": {
+          "react": "React",
+          "typescript": "TypeScript",
+          "nodeExpress": "Node/Express",
+          "mysql": "MySQL",
+          "externalApis": "APIs externas"
+        },
+        "skills": {
+          "frontendArchitecture": {
+            "title": "Arquitectura frontend",
+            "description": "Estructura de vistas, estados y componentes pensada para sostener flujos de producto claros y escalables."
+          },
+          "backendApiDesign": {
+            "title": "Backend y diseño de API",
+            "description": "Endpoints organizados para operaciones de biblioteca, autenticación, consultas y comunicación con servicios externos."
+          },
+          "databaseModeling": {
+            "title": "Modelado de base de datos",
+            "description": "Persistencia en MySQL con entidades y relaciones orientadas a una colección multimedia mantenible."
+          },
+          "externalApiIntegration": {
+            "title": "Integración con APIs externas",
+            "description": "Consumo de datos externos para enriquecer el catálogo y reducir carga manual en la gestión de contenido."
+          },
+          "advancedFilteringSearch": {
+            "title": "Búsqueda y filtros avanzados",
+            "description": "Experiencia de exploración con criterios combinables para encontrar contenido de forma rápida."
+          },
+          "productThinking": {
+            "title": "Pensamiento de producto escalable",
+            "description": "Organización por módulos y casos de uso, preparada para sumar nuevas capturas, secciones y flujos."
+          },
+          "dashboardUx": {
+            "title": "Diseño UI/UX de dashboard",
+            "description": "Jerarquía visual, métricas y pantallas operativas enfocadas en uso real, no solo en screenshots."
+          }
+        },
+        "screenshots": {
+          "home": {
+            "title": "Inicio",
+            "description": "Entrada al producto con navegación clara y acceso rápido a los módulos principales.",
+            "alt": "Pantalla de inicio de PandaPedia"
+          },
+          "explore": {
+            "title": "Explorar",
+            "description": "Descubrimiento de contenido con foco en búsqueda, filtros y recorrido fluido.",
+            "alt": "Módulo Explorar de PandaPedia"
+          },
+          "pandateca": {
+            "title": "Pandateca",
+            "description": "Biblioteca personal para consultar, ordenar y administrar contenido guardado.",
+            "alt": "Biblioteca Pandateca"
+          },
+          "addContent": {
+            "title": "Alta de contenido",
+            "description": "Flujo para registrar contenido y mantener la colección actualizada.",
+            "alt": "Formulario de alta de contenido"
+          },
+          "stats": {
+            "title": "Estadísticas",
+            "description": "Dashboard con métricas para analizar hábitos, categorías y estado de la biblioteca.",
+            "alt": "Dashboard de estadísticas de PandaPedia"
+          },
+          "account": {
+            "title": "Cuenta",
+            "description": "Espacio de usuario para revisar datos de perfil y preferencias de la experiencia.",
+            "alt": "Pantalla de cuenta de usuario"
+          },
+          "login": {
+            "title": "Login",
+            "description": "Acceso al producto con una interfaz directa y consistente con el resto del sistema.",
+            "alt": "Pantalla de login de PandaPedia"
+          },
+          "about": {
+            "title": "About",
+            "description": "Pantalla informativa para contextualizar el producto y su propósito.",
+            "alt": "Pantalla About de PandaPedia"
+          }
+        },
+        "highlights": {
+          "crudLibrary": "CRUD completo sobre biblioteca multimedia",
+          "advancedSearch": "Búsqueda y filtros avanzados",
+          "externalApis": "Integración con APIs externas",
+          "mysqlPersistence": "Persistencia en MySQL",
+          "modularArchitecture": "Arquitectura modular",
+          "metricsDashboard": "Dashboard con métricas",
+          "personalLibraryUx": "Experiencia centrada en biblioteca personal de contenido"
+        },
+        "security": {
+          "jwtAuth": "Manejo de autenticación preparado con JWT",
+          "frontendBackendSeparation": "Separación clara entre frontend y backend",
+          "environmentVariables": "Uso de variables de entorno (.env) para credenciales y configuración",
+          "protectedEndpoints": "Estructura preparada para proteger endpoints sensibles",
+          "centralizedErrors": "Manejo centralizado de errores en backend",
+          "backendValidation": "Validación de datos antes de persistir o consultar información",
+          "secureCookiesRefresh": "Arquitectura preparada para cookies seguras y refresh tokens"
+        },
+        "deployment": {
+          "description": "Arquitectura preparada para despliegue en la nube, separando frontend, backend y base de datos para escalar como SaaS.",
+          "items": {
+            "frontend": {
+              "title": "Frontend",
+              "description": "Aplicación desplegada en Vercel.",
+              "technologies": ["Vercel"]
+            },
+            "backend": {
+              "title": "Backend",
+              "description": "Backend Node.js preparado para deploy en Render o servicios similares.",
+              "technologies": ["Node.js", "Render ready"]
+            },
+            "database": {
+              "title": "Base de datos",
+              "description": "Persistencia en MySQL preparada para proveedores cloud como TiDB.",
+              "technologies": ["MySQL", "TiDB ready"]
+            }
+          }
+        }
       }
-    ]
+    }
   },
   "skills": {
     "title": "Conocimientos y herramientas",
-    "tools": "Herramientas",
-    "courses": "Cursos y Certificaciones"
+    "subtitle": "Tecnologías y herramientas utilizadas en proyectos reales fullstack",
+    "groups": {
+      "frontendEngineering": {
+        "title": "Frontend Engineering",
+        "description": "Construcción de interfaces escalables, mantenibles y orientadas a producto.",
+        "items": {
+          "reactTypeScript": "React + TypeScript",
+          "componentArchitecture": "Arquitectura de componentes",
+          "uiSystems": "Material UI / Tailwind",
+          "statePerformance": "Estado y performance"
+        }
+      },
+      "backendApis": {
+        "title": "Backend & APIs",
+        "description": "Diseño de servicios, endpoints y flujos robustos para productos fullstack.",
+        "items": {
+          "nodeExpress": "Node.js + Express",
+          "restApiDesign": "APIs REST",
+          "validationErrors": "Validaciones y errores"
+        }
+      },
+      "dataPersistence": {
+        "title": "Data & Persistence",
+        "description": "Modelado y persistencia de datos con foco en consultas útiles y mantenibles.",
+        "items": {
+          "mysqlModeling": "MySQL relacional",
+          "optimizedQueries": "Queries optimizadas",
+          "connectionPools": "Pool de conexiones"
+        }
+      },
+      "devopsTools": {
+        "title": "DevOps & Tools",
+        "description": "Herramientas de trabajo para versionado, despliegue, testing manual y entornos.",
+        "items": {
+          "github": "GitHub",
+          "docker": "Docker",
+          "vercel": "Vercel",
+          "postman": "Postman"
+        }
+      }
+    },
+    "courses": "Formación complementaria",
+    "courses_note": "Cursos como soporte, no como foco principal",
+    "open_course": "Abrir curso {{title}}"
   },
   "experience": {
     "title": "Dónde apliqué lo que sé",
@@ -60,30 +253,32 @@
       {
         "role": "Desarrollador Full Stack",
         "company": "PBS - Telviso",
-        "period": "jun 2025 – Actualidad",
+        "period": "jun 2025 - dic 2025",
         "bullets": [
           "Desarrollo y mantenimiento de sistemas internos",
           "Creación de ABMs, formularios y dashboards.",
           "Consultas SQL complejas, filtros, paginación, optimización.",
           "Integración con APIs internas y módulos legacy.",
-          "Creación de ABMs, formularios y dashboards.",
           "Diseño de interfaces funcionales en Vue y JS."
         ]
       },
       {
         "role": "Desarrollador Full Stack (Freelance)",
         "company": "fAQ Solutions",
-        "period": "2024 – Actualidad",
+        "period": "2024 - Actualidad",
         "bullets": [
-          "Desarrollo de landings y aplicaciones web a medida",
-          "Integración con APIs y despliegue en Vercel",
-          "Optimización de performance y SEO"
+          "Desarrollo de landings y aplicaciones web a medida con foco en UX y conversión",
+          "Integración con APIs externas y diseño de flujos de datos",
+          "Deploy en Vercel con manejo de entornos y optimización de performance",
+          "Mejora de performance (Lighthouse, carga inicial, renderizado eficiente)",
+          "Implementación de SEO técnico y optimización para buscadores",
+          "Arquitectura frontend escalable con React y TypeScript"
         ]
       },
       {
         "role": "Desarrollador Web",
         "company": "Miii",
-        "period": "nov 2021 – dic 2023",
+        "period": "nov 2021 - dic 2023",
         "bullets": [
           "Desarrollo del backoffice interno con React y Material UI",
           "Integración de APIs y automatización de procesos",
@@ -100,6 +295,9 @@
     "email": "Contactar"
   },
   "footer": {
-    "made": "Hecho con React & Material UI"
+    "made": "Hecho con React & Material UI",
+    "github": "Abrir GitHub",
+    "linkedin": "Abrir LinkedIn",
+    "email": "Enviar email"
   }
 }

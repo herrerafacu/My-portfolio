@@ -1,38 +1,27 @@
-export const skillsByCategory = {
-  Frontend: [
-    "React",
-    "Vue",
-    "Angular",
-    "TypeScript",
-    "JavaScript",
-    "Material UI",
-    "Tailwind / CSS",
-    "Redux.js",
-    "Vite",
-  ],
-  Backend: ["PHP", "MySQL", "Node.js / Express"],
-  DevOps: ["GitHub", "Docker", "JIRA", "Postman", "Vercel"],
-};
-
-export const skillsFlat = [
-  "HTML",
-  "CSS / Styled Components",
-  "JavaScript",
-  "React",
-  "TypeScript",
-  "Vue",
-  "Angular",
-  "Redux.js",
-  "Material UI",
-  "Node.js / Express",
-  "MySQL",
-  "PHP",
-  "Docker",
-  "Vite",
-  "Git / GitHub / Vercel",
-  "JIRA",
-  "Postman",
+export const skillCapabilityGroups = [
+  {
+    id: "frontendEngineering",
+    items: [
+      "reactTypeScript",
+      "componentArchitecture",
+      "uiSystems",
+      "statePerformance",
+    ],
+  },
+  {
+    id: "backendApis",
+    items: ["nodeExpress", "restApiDesign", "validationErrors"],
+  },
+  {
+    id: "dataPersistence",
+    items: ["mysqlModeling", "optimizedQueries", "connectionPools"],
+  },
+  {
+    id: "devopsTools",
+    items: ["github", "docker", "vercel", "postman"],
+  },
 ];
+
 export const courses = [
   {
     title: "Master Frameworks JavaScript: React, Angular y Vue",
@@ -47,7 +36,7 @@ export const courses = [
     url: "",
   },
   {
-    title: "Fundamentos de la Programación",
+    title: "Fundamentos de la Programacion",
     provider: "Udemy",
     year: 2020,
     url: "",
@@ -60,4 +49,4 @@ export const courses = [
   },
 ];
 
-export default skillsFlat;
+export default skillCapabilityGroups;

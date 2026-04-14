@@ -10,15 +10,21 @@ export default function Contact() {
   const { t } = useTranslation();
 
   return (
-    <Box id="contact" sx={{ ...sectionSX }}>
+    <Box id="contact" component="section" sx={{ ...sectionSX }}>
       <Card sx={{ p: 3, width: "min(720px, 100%)" }}>
-        <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
+        <Typography component="h2" variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
           {t("contact.title")}
         </Typography>
         <Typography color="text.secondary" sx={{ mb: 2 }}>
           {t("contact.lead")}
         </Typography>
-        <Stack direction="row" spacing={2} justifyContent="center">
+        <Stack
+          direction="row"
+          spacing={2}
+          useFlexGap
+          flexWrap="wrap"
+          justifyContent="center"
+        >
           <Button
             variant="contained"
             startIcon={<MailIcon />}
@@ -31,8 +37,9 @@ export default function Contact() {
             startIcon={<LinkedInIcon />}
             href="https://www.linkedin.com/in/facundo-herrera-289a111b9/"
             target="_blank"
+            rel="noreferrer"
           >
-            LinkedIn
+            {t("contact.linkedin")}
           </Button>
         </Stack>
       </Card>
