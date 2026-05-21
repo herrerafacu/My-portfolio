@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b1220"/>
+  <rect x="86" y="78" width="1028" height="474" rx="28" fill="#0f172a" stroke="#1f2f46" stroke-width="2"/>
+  <path d="M86 552C259 388 411 523 576 360C731 207 850 257 1114 86V552H86Z" fill="url(#paint0_linear)" fill-opacity="0.34"/>
+  <circle cx="945" cy="156" r="178" fill="#00bcd4" fill-opacity="0.12"/>
+  <circle cx="255" cy="468" r="212" fill="#1976d2" fill-opacity="0.17"/>
+  <text x="132" y="168" fill="#00bcd4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">FULLSTACK</text>
+  <text x="132" y="288" fill="#f8fafc" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="76" font-weight="900">Facundo Herrera</text>
+  <text x="132" y="362" fill="#cbd5e1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="600">React | Node.js | MySQL | APIs</text>
+  <text x="132" y="454" fill="#94a3b8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">Web applications | Dashboards | API integrations</text>
+  <rect x="132" y="490" width="300" height="12" rx="6" fill="#1976d2"/>
+  <rect x="452" y="490" width="176" height="12" rx="6" fill="#00bcd4"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="86" y1="552" x2="1114" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1976d2"/>
+      <stop offset="1" stop-color="#00bcd4"/>
+    </linearGradient>
+  </defs>
+</svg>
