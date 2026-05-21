@@ -4,7 +4,6 @@ import {
   Typography,
   Chip,
   Card,
-  CardContent,
   Link as MLink,
 } from "@mui/material";
 import {
@@ -16,7 +15,14 @@ import {
   School as SchoolIcon,
 } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
-import { sectionSX, titleSX } from "../styles";
+import {
+  sectionSX,
+  sectionInnerSX,
+  sectionLabelSX,
+  sectionTitleSX,
+  sectionSubtitleSX,
+} from "../styles";
+import useReveal from "../utils/useReveal.js";
 
 const skillGroupIcons = {
   frontendEngineering: CodeIcon,
@@ -43,156 +49,150 @@ function localizeSkillGroup(group, t) {
 
 export default function Skills({ skillGroups = [], courses = [] }) {
   const { t } = useTranslation();
+  const headerRef = useReveal();
   const localizedGroups = skillGroups.map((group) =>
-    localizeSkillGroup(group, t),
+    localizeSkillGroup(group, t)
   );
 
   return (
-    <Box id="skills" component="section" sx={{ ...sectionSX }}>
-      <Stack spacing={3.5} sx={{ width: "100%" }} alignItems="center">
-        <Stack spacing={1} alignItems="center" sx={{ maxWidth: 760 }}>
-          <Typography component="h2" sx={{ ...titleSX, mb: 0 }}>
+    <Box id="skills" component="section" sx={sectionSX}>
+      <Box sx={sectionInnerSX}>
+        <Stack
+          spacing={0}
+          sx={{ mb: { xs: 5, md: 8 } }}
+          ref={headerRef}
+          className="reveal"
+        >
+          <Typography sx={sectionLabelSX}>
+            {t("nav.skills")}
+          </Typography>
+          <Typography component="h2" sx={sectionTitleSX}>
             {t("skills.title")}
           </Typography>
-          <Typography
-            color="text.secondary"
-            sx={{
-              maxWidth: 680,
-              lineHeight: 1.65,
-              fontSize: { xs: "0.98rem", md: "1.05rem" },
-            }}
-          >
-            {t("skills.subtitle")}
-          </Typography>
+          <Typography sx={sectionSubtitleSX}>{t("skills.subtitle")}</Typography>
         </Stack>
 
         <Box
           sx={{
-            width: "100%",
-            maxWidth: 1120,
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))" },
-            gap: { xs: 1.5, md: 2 },
+            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
+            gap: { xs: 2, md: 2.5 },
+            mb: { xs: 3, md: 4 },
           }}
         >
-          {localizedGroups.map((group) => (
-            <SkillCard key={group.id} group={group} />
+          {localizedGroups.map((group, idx) => (
+            <SkillCard
+              key={group.id}
+              group={group}
+              delay={idx * 80}
+              fromLeft={idx % 2 === 0}
+            />
           ))}
         </Box>
 
         {Array.isArray(courses) && courses.length > 0 && (
           <CoursesPanel courses={courses} t={t} />
         )}
-      </Stack>
+      </Box>
     </Box>
   );
 }
 
-function SkillCard({ group }) {
+function SkillCard({ group, delay, fromLeft }) {
+  const ref = useReveal();
   const Icon = skillGroupIcons[group.id] ?? CodeIcon;
 
   return (
     <Card
+      ref={ref}
+      className={`reveal ${fromLeft ? "reveal-left" : "reveal-right"}`}
       sx={{
-        height: "100%",
-        borderRadius: "8px",
-        border: "1px solid",
-        borderColor: "divider",
-        bgcolor: "rgba(15, 23, 42, 0.62)",
+        p: { xs: 2.5, md: 3.5 },
+        borderRadius: 4,
         textAlign: "left",
-        backgroundImage:
-          "linear-gradient(135deg, rgba(25,118,210,0.11), rgba(0,188,212,0.04) 55%, rgba(15,23,42,0))",
+        transitionDelay: `${delay}ms`,
+        transition:
+          "transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease, opacity 800ms cubic-bezier(0.16,1,0.3,1)",
+        "&:hover": {
+          transform: "translateY(-4px)",
+          borderColor: "primary.main",
+        },
       }}
     >
-      <CardContent sx={{ p: { xs: 2.25, md: 2.75 } }}>
-        <Stack spacing={2}>
-          <Stack direction="row" spacing={1.5} alignItems="flex-start">
-            <Box
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                display: "grid",
-                placeItems: "center",
-                color: "secondary.main",
-                bgcolor: "rgba(0,188,212,0.1)",
-                border: "1px solid rgba(0,188,212,0.22)",
-                flexShrink: 0,
-              }}
-            >
-              <Icon fontSize="small" />
-            </Box>
-            <Stack spacing={0.6}>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 900, lineHeight: 1.2 }}
-              >
-                {group.title}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.65 }}
-              >
-                {group.description}
-              </Typography>
-            </Stack>
-          </Stack>
-
-          <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
-            {group.items.map((item) => (
-              <Chip
-                key={item.id}
-                label={item.label}
-                size="small"
-                variant="outlined"
-                sx={{
-                  borderRadius: "6px",
-                  fontWeight: 700,
-                  bgcolor: "rgba(255,255,255,0.03)",
-                }}
-              />
-            ))}
-          </Stack>
+      <Stack spacing={2}>
+        <Stack direction="row" spacing={1.5} alignItems="center">
+          <Box
+            sx={{
+              width: 44,
+              height: 44,
+              borderRadius: 2.5,
+              display: "grid",
+              placeItems: "center",
+              color: "primary.main",
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark"
+                  ? "rgba(99,102,241,0.12)"
+                  : "rgba(99,102,241,0.08)",
+              border: "1px solid",
+              borderColor: "rgba(99,102,241,0.25)",
+            }}
+          >
+            <Icon />
+          </Box>
+          <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+            {group.title}
+          </Typography>
         </Stack>
-      </CardContent>
+
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ lineHeight: 1.6 }}
+        >
+          {group.description}
+        </Typography>
+
+        <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap">
+          {group.items.map((item) => (
+            <Chip
+              key={item.id}
+              label={item.label}
+              size="small"
+              variant="outlined"
+              sx={{ borderRadius: 1.5, fontWeight: 600 }}
+            />
+          ))}
+        </Stack>
+      </Stack>
     </Card>
   );
 }
 
 function CoursesPanel({ courses, t }) {
+  const ref = useReveal();
   return (
-    <Box
+    <Card
+      ref={ref}
+      className="reveal"
       sx={{
-        width: "100%",
-        maxWidth: 1120,
-        border: "1px solid",
-        borderColor: "divider",
-        borderRadius: "8px",
-        bgcolor: "rgba(15, 23, 42, 0.36)",
+        p: { xs: 2.5, md: 3 },
+        borderRadius: 4,
         textAlign: "left",
-        px: { xs: 2, md: 2.5 },
-        py: { xs: 1.5, md: 1.75 },
       }}
     >
-      <Stack spacing={1.25}>
-        <Stack direction="row" spacing={1} alignItems="center">
+      <Stack spacing={2}>
+        <Stack direction="row" spacing={1.25} alignItems="center">
           <SchoolIcon color="primary" fontSize="small" />
-          <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
+          <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
             {t("skills.courses")}
           </Typography>
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ display: { xs: "none", sm: "inline" } }}
-          ></Typography>
         </Stack>
 
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(2, minmax(0, 1fr))" },
-            gap: { xs: 0.75, md: 1 },
+            gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)" },
+            gap: 1,
           }}
         >
           {courses.map((course, index) => (
@@ -203,18 +203,22 @@ function CoursesPanel({ courses, t }) {
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: 1,
-                minWidth: 0,
-                py: 0.75,
-                px: 1,
-                borderRadius: "6px",
-                bgcolor: "rgba(255,255,255,0.025)",
+                py: 1,
+                px: 1.5,
+                borderRadius: 2,
+                bgcolor: (theme) =>
+                  theme.palette.mode === "dark"
+                    ? "rgba(255,255,255,0.03)"
+                    : "rgba(11,11,20,0.04)",
+                border: "1px solid",
+                borderColor: "divider",
               }}
             >
-              <Stack spacing={0.15} sx={{ minWidth: 0 }}>
+              <Stack spacing={0.25} sx={{ minWidth: 0 }}>
                 <Typography
                   variant="body2"
                   sx={{
-                    fontWeight: 700,
+                    fontWeight: 600,
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     whiteSpace: "nowrap",
@@ -232,13 +236,11 @@ function CoursesPanel({ courses, t }) {
                   target="_blank"
                   rel="noreferrer"
                   underline="hover"
-                  aria-label={t("skills.open_course", {
-                    title: course.title,
-                  })}
+                  aria-label={t("skills.open_course", { title: course.title })}
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
-                    color: "secondary.main",
+                    color: "primary.main",
                     flexShrink: 0,
                   }}
                 >
@@ -249,6 +251,6 @@ function CoursesPanel({ courses, t }) {
           ))}
         </Box>
       </Stack>
-    </Box>
+    </Card>
   );
 }

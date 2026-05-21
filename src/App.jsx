@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 
 import projects from "./data/projects";
 import { skillCapabilityGroups, courses } from "./data/skills";
@@ -13,6 +13,7 @@ import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills.jsx";
 import Footer from "./components/Footer.jsx";
 import AboutMe from "./components/AboutMe.jsx";
+import CtaBlock from "./components/CtaBlock.jsx";
 import Seo from "./components/Seo.jsx";
 
 export default function App() {
@@ -31,12 +32,15 @@ export default function App() {
       <Seo />
       <CssBaseline />
       <Navbar mode={mode} setMode={setMode} />
-      <Hero />
-      <AboutMe />
-      <Projects projects={projects} />
-      <Skills skillGroups={skillCapabilityGroups} courses={courses} />
-      <Experience />
-      <Contact />
+      <Box component="main">
+        <Hero />
+        <AboutMe />
+        <Projects projects={projects} />
+        <Skills skillGroups={skillCapabilityGroups} courses={courses} />
+        <Experience />
+        <Contact />
+        <CtaBlock />
+      </Box>
       <Footer />
     </ThemeProvider>
   );

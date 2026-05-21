@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "about": "About me",
     "projects": "Projects",
     "skills": "Skills",
@@ -17,11 +18,13 @@
     "enable_light_mode": "Enable light mode"
   },
   "hero": {
+    "greeting": "Hi, I'm Facundo Herrera",
     "badge": "Available for new projects",
-    "title_prefix": "I build fast, scalable web applications with great user experience",
-    "lead": "Real-world experience developing complex internal systems, dashboards, CRUDs, API integrations and production-level maintenance.",
+    "title_prefix": "I build software that runs in production",
+    "lead": "Fullstack developer. 4+ years building internal systems, dashboards and CRUDs that hundreds of people use every day.",
     "cta_projects": "View projects",
-    "cta_cv": "Download CV"
+    "cta_cv": "Download CV",
+    "tech_label": "What I use day to day"
   },
   "seo": {
     "title": "Facundo Herrera — Fullstack Developer",
@@ -32,13 +35,69 @@
   },
   "about": {
     "about_me": "About me",
-    "title": "Who I am and how I work",
+    "title": "How I work and what I focus on",
+    "subtitle": "What I care about when building software, beyond the stack.",
+    "features": {
+      "conversion": {
+        "title": "Product before code",
+        "body": "I think about who's using the screen and who's going to maintain it later. A feature ships when it solves the problem, not when it compiles."
+      },
+      "performance": {
+        "title": "Built for production",
+        "body": "Real data, real users, real bugs. I design flows knowing they'll break and need to be fixed on the spot.",
+        "items": ["Desktop", "Tablet", "Mobile"]
+      },
+      "speed": {
+        "title": "Stack chosen on purpose",
+        "body": "I use what the problem needs: React, Vue, Node, MySQL, PHP, and I adapt to whatever language the project uses."
+      },
+      "quality": {
+        "title": "Frontend with UX in mind",
+        "body": "Not just painting components. I think about interactions, loading states, errors and accessibility."
+      },
+      "process": {
+        "title": "Reliable backend",
+        "body": "Clean APIs, serious validation, queries that don't break when the table grows. What a production system deserves."
+      },
+      "fullstack": {
+        "title": "I close the loop",
+        "body": "Frontend, backend, database, deploy and that 11 PM production bug. It's all part of the job."
+      }
+    },
+    "title_legacy": "Who I am and how I work",
     "who_title": "Who am I?",
     "who_body": "I am a Full Stack Developer focused on frontend (React, Vue and Material UI) with over 4 years of experience building web applications, internal systems, CRUDs, dashboards and API integrations.",
     "who_body2": "At Miii I worked on the development of the internal backoffice and corporate landings, handling deploys and production maintenance. Later, as a freelance developer, I built landings and applications using React, Angular, Tailwind CSS and other technologies.",
     "who_body3": "I also worked at PBS for Telviso, contributing to the development, maintenance and improvement of internal systems using PHP, MySQL, Vue and JS. I build new features, optimize existing modules, create complete CRUDs, integrate internal APIs, work with Docker containers and maintain systems with high-volume production data. I also participated in incident resolution, performance improvements, legacy code refactoring and the creation of functional interfaces used daily by hundreds of internal users.",
     "how_title": "How I work",
     "how_body": "I enjoy working as a team, building fast, measuring results and constantly optimizing digital products. I prioritize clear communication, iterative deliveries and clean, maintainable code."
+  },
+  "projectsSection": {
+    "label": "Projects",
+    "title": "A few things I've built",
+    "subtitle": "A selection of personal projects. The rest of my work lives in private company systems, so these are the ones I can actually show.",
+    "see_all": "See all on GitHub",
+    "private_label": "Private repository"
+  },
+  "contactSection": {
+    "label": "Contact",
+    "title": "Want to work together?",
+    "lead": "If you're looking for a Fullstack dev to join your team or have a project in mind, drop me a line. I reply within 24h.",
+    "find_me": "You can also find me here:",
+    "form_title": "Send me a message",
+    "form_lead": "A quick description of the project and when you'd start is enough.",
+    "form_name": "Name",
+    "form_email": "Email",
+    "form_subject": "Subject",
+    "form_budget": "Company or project (optional)",
+    "form_message": "What's it about?",
+    "form_submit": "Send message",
+    "form_or_email": "Or directly:"
+  },
+  "ctaBlock": {
+    "title": "Thanks for scrolling this far",
+    "subtitle": "If you made it down here, something caught your attention. I'm one email away.",
+    "cta": "Get in touch"
   },
   "projects": {
     "title": "Personal projects",
@@ -201,8 +260,8 @@
     }
   },
   "skills": {
-    "title": "Skills & tools",
-    "subtitle": "Technologies and tools used in real fullstack projects",
+    "title": "Stack and tools",
+    "subtitle": "What I've broken, fixed and used again in real projects.",
     "groups": {
       "frontendEngineering": {
         "title": "Frontend Engineering",
@@ -249,6 +308,7 @@
   },
   "experience": {
     "title": "Where I applied what I know",
+    "subtitle": "Three companies, very different contexts, same approach: finish what I start.",
     "items": [
       {
         "role": "Full Stack Developer",

@@ -1,3 +1,9 @@
+:root {
+  --purple: #6366f1;
+  --purple-light: #818cf8;
+  --purple-dark: #4f46e5;
+}
+
 html {
   scroll-behavior: smooth;
   width: 100%;
@@ -6,7 +12,11 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   width: 100%;
   overflow-x: hidden;
 }
@@ -15,6 +25,87 @@ body {
   min-height: 100vh;
 }
 
+/* ===== Reveal on scroll ===== */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal:not(.is-visible) {
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+  transform: translate3d(-40px, 0, 0);
+}
+
+.reveal.reveal-right {
+  transform: translate3d(40px, 0, 0);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.94) translateZ(0);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+/* ===== Marquee for tech logos ===== */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 38s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.marquee-track.reverse {
+  animation: marquee-right 38s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+}
+
+/* ===== Hero animations (legacy compat) ===== */
 @keyframes heroTextIn {
   from {
     opacity: 0;
@@ -37,12 +128,69 @@ body {
   }
 }
 
-@keyframes heroGradientShift {
+@keyframes pulseGlow {
   0%,
   100% {
-    background-position: 0% 50%;
+    opacity: 0.5;
+    transform: scale(1);
   }
   50% {
-    background-position: 100% 50%;
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== Project card glow ===== */
+.project-card-glow {
+  position: relative;
+}
+.project-card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px -1px auto -1px;
+  height: 60px;
+  background: linear-gradient(
+    180deg,
+    rgba(99, 102, 241, 0.35) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  border-radius: 16px 16px 0 0;
+  z-index: 0;
+}
+
+/* ===== Paint containment for off-screen sections ===== */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+/* Hero stays rendered so first paint includes it */
+section#home {
+  content-visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .marquee-track,
+  .marquee-track.reverse {
+    animation: none;
   }
 }

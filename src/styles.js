@@ -1,21 +1,54 @@
 export const sectionSX = {
   width: "100%",
-  py: { xs: 5, md: 7 },
-  px: { xs: 2, md: 3 },
-  textAlign: "center",
+  py: { xs: 8, md: 12 },
+  px: { xs: 2, md: 4 },
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  scrollMarginTop: "80px",
+  scrollMarginTop: "100px",
+  position: "relative",
+};
+
+export const sectionInnerSX = {
+  width: "100%",
+  maxWidth: 1200,
+  mx: "auto",
+};
+
+export const sectionLabelSX = {
+  color: "primary.main",
+  fontWeight: 600,
+  fontSize: { xs: "0.95rem", md: "1rem" },
+  letterSpacing: "-0.01em",
+  mb: 1.5,
+};
+
+export const sectionTitleSX = {
+  fontWeight: 800,
+  fontSize: { xs: "2rem", sm: "2.6rem", md: "3.4rem" },
+  lineHeight: 1.08,
+  letterSpacing: "-0.025em",
+  color: "text.primary",
+  mb: 1.5,
+};
+
+export const sectionSubtitleSX = {
+  color: "text.secondary",
+  fontSize: { xs: "1rem", md: "1.1rem" },
+  maxWidth: 640,
+  lineHeight: 1.55,
+  mb: { xs: 4, md: 6 },
 };
 
 export const heroSX = {
   width: "100%",
-  minHeight: { xs: "calc(100svh - 57px)", md: "calc(100vh - 65px)" },
-  py: { xs: 6, md: 8 },
+  minHeight: { xs: "100svh", md: "100vh" },
+  pt: { xs: 18, md: 24 },
+  pb: { xs: 8, md: 12 },
   px: { xs: 2, md: 3 },
   textAlign: "center",
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   overflowX: "hidden",
@@ -25,32 +58,33 @@ export const heroSX = {
   "&::before": {
     content: '""',
     position: "absolute",
-    inset: 0,
+    top: "15%",
+    left: "50%",
+    transform: "translate3d(-50%, 0, 0)",
+    width: "70%",
+    height: "65%",
     zIndex: -1,
     pointerEvents: "none",
-    opacity: 0.62,
     background:
-      "linear-gradient(120deg, rgba(25,118,210,0.12) 0%, rgba(11,18,32,0) 34%, rgba(0,188,212,0.08) 58%, rgba(11,18,32,0) 100%)",
-    backgroundSize: "220% 220%",
-    animation: "heroGradientShift 18s ease-in-out infinite",
-  },
-  "@media (prefers-reduced-motion: reduce)": {
-    "&::before": {
-      animation: "none",
-    },
+      "radial-gradient(ellipse at center, rgba(99,102,241,0.22) 0%, transparent 70%)",
+    willChange: "transform",
   },
 };
 
 export const heroContentSX = {
   width: "100%",
-  maxWidth: { xs: 300, sm: 760, md: 1180 },
+  maxWidth: { xs: 360, sm: 760, md: 1100 },
   minWidth: 0,
   position: "relative",
   zIndex: 1,
 };
 
-export const heroBadgeSX = {
-  fontWeight: 700,
+export const heroGreetingSX = {
+  color: "primary.main",
+  fontWeight: 500,
+  fontSize: { xs: "1rem", md: "1.15rem" },
+  letterSpacing: "-0.005em",
+  mb: { xs: 3, md: 4 },
   opacity: 0,
   transform: "translateY(10px)",
   animation: "heroTextIn 650ms cubic-bezier(0.16, 1, 0.3, 1) 80ms forwards",
@@ -61,33 +95,28 @@ export const heroBadgeSX = {
   },
 };
 
-export const titleSX = {
-  fontWeight: 800,
-  fontSize: {
-    xs: "2rem",
-    sm: "2.35rem",
-    md: "3.2rem",
-  },
-  lineHeight: 1.15,
-  mb: 2,
-  color: "text.primary",
-};
-
 export const heroTitleSX = {
-  fontWeight: 800,
+  fontWeight: 700,
   fontSize: {
-    xs: "1.8rem",
-    sm: "3rem",
-    md: "4.2rem",
+    xs: "2.5rem",
+    sm: "3.8rem",
+    md: "5.2rem",
+    lg: "5.8rem",
   },
-  lineHeight: 1.08,
-  mb: 2,
+  lineHeight: { xs: 1.05, md: 1.02 },
+  letterSpacing: "-0.04em",
+  mb: { xs: 4, md: 5 },
   width: "100%",
-  maxWidth: { xs: 300, sm: 760, md: 1180 },
+  maxWidth: { xs: 360, sm: 760, md: 1100 },
   mx: "auto",
-  color: "text.primary",
+  background: (theme) =>
+    theme.palette.mode === "dark"
+      ? "linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.5) 100%)"
+      : "linear-gradient(180deg, #0b0b14 0%, rgba(11,11,20,0.78) 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
   overflowWrap: "anywhere",
-  hyphens: "auto",
   opacity: 0,
   transform: "translateY(14px)",
   animation: "heroTextIn 760ms cubic-bezier(0.16, 1, 0.3, 1) 160ms forwards",
@@ -100,11 +129,13 @@ export const heroTitleSX = {
 
 export const leadSX = {
   color: "text.secondary",
-  fontSize: { xs: 16, md: 18 },
-  maxWidth: { xs: 300, sm: 680, md: 880 },
+  fontSize: { xs: "1.05rem", md: "1.15rem" },
+  maxWidth: { xs: 360, sm: 620, md: 760 },
   width: "100%",
   mx: "auto",
-  overflowWrap: "break-word",
+  lineHeight: 1.6,
+  letterSpacing: "-0.005em",
+  mb: { xs: 5, md: 6 },
   opacity: 0,
   transform: "translateY(12px)",
   animation: "heroTextIn 720ms cubic-bezier(0.16, 1, 0.3, 1) 340ms forwards",
@@ -129,29 +160,31 @@ export const heroActionsSX = {
 
 export const heroButtonSX = {
   width: { xs: "100%", sm: "auto" },
-  maxWidth: 240,
-  borderRadius: "8px",
+  minWidth: 160,
+  borderRadius: 12,
+  py: 1.4,
+  px: 3,
+  fontWeight: 600,
+  fontSize: "1rem",
   transition:
     "transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease",
   "&:hover": {
     transform: "translateY(-2px)",
-    boxShadow: "0 14px 32px rgba(25,118,210,0.28)",
-  },
-  "&:active": {
-    transform: "translateY(0) scale(0.97)",
-  },
-  "&:focus-visible": {
-    outline: "2px solid",
-    outlineColor: "secondary.main",
-    outlineOffset: 3,
   },
   "@media (prefers-reduced-motion: reduce)": {
-    transition: "box-shadow 200ms ease, background-color 200ms ease",
-    "&:hover": {
-      transform: "none",
-    },
-    "&:active": {
-      transform: "none",
-    },
+    "&:hover": { transform: "none" },
+  },
+};
+
+export const titleSX = sectionTitleSX;
+
+export const cardSX = {
+  height: "100%",
+  borderRadius: 4,
+  p: { xs: 2.5, md: 3.5 },
+  transition: "transform 300ms ease, border-color 300ms ease",
+  "&:hover": {
+    transform: "translateY(-4px)",
+    borderColor: "primary.main",
   },
 };
