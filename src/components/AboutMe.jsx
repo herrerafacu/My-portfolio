@@ -1,12 +1,8 @@
-import { Box, Stack, Typography, Card } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import {
   PsychologyAlt as PsychologyAltIcon,
   Devices as DevicesIcon,
-  Build as BuildIcon,
-  Visibility as VisibilityIcon,
-  Storage as StorageIcon,
   AllInclusive as AllInclusiveIcon,
-  CheckCircle as CheckCircleIcon,
 } from "@mui/icons-material";
 import {
   sectionSX,
@@ -18,21 +14,10 @@ import {
 import { useTranslation } from "react-i18next";
 import useReveal from "../utils/useReveal.js";
 
+// Three pillars, using the existing copy: product, production, end-to-end fullstack.
 const FEATURES = [
-  {
-    id: "conversion",
-    icon: PsychologyAltIcon,
-    span: { xs: "1 / -1", md: "span 1" },
-  },
-  {
-    id: "performance",
-    icon: DevicesIcon,
-    span: { xs: "1 / -1", md: "span 1" },
-    hasItems: true,
-  },
-  { id: "speed", icon: BuildIcon },
-  { id: "quality", icon: VisibilityIcon },
-  { id: "process", icon: StorageIcon },
+  { id: "conversion", icon: PsychologyAltIcon },
+  { id: "performance", icon: DevicesIcon, hasItems: true },
   { id: "fullstack", icon: AllInclusiveIcon },
 ];
 
@@ -56,20 +41,15 @@ export default function AboutMe() {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              md: "repeat(2, 1fr)",
-              lg: "repeat(3, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
             },
-            gap: { xs: 2, md: 2.5 },
+            columnGap: { xs: 4, md: 6 },
+            rowGap: { xs: 4.5, md: 6 },
           }}
         >
           {FEATURES.map((feature, idx) => (
-            <FeatureCard
-              key={feature.id}
-              feature={feature}
-              t={t}
-              delay={idx * 80}
-              big={idx < 2}
-            />
+            <FeatureItem key={feature.id} feature={feature} t={t} delay={idx * 55} />
           ))}
         </Box>
       </Box>
@@ -77,7 +57,7 @@ export default function AboutMe() {
   );
 }
 
-function FeatureCard({ feature, t, delay, big }) {
+function FeatureItem({ feature, t, delay }) {
   const ref = useReveal();
   const Icon = feature.icon;
   const items = feature.hasItems
@@ -86,122 +66,54 @@ function FeatureCard({ feature, t, delay, big }) {
   const itemList = Array.isArray(items) ? items : [];
 
   return (
-    <Card
+    <Box
       ref={ref}
       className="reveal"
       sx={{
-        gridColumn: big
-          ? { xs: "1 / -1", md: "span 1", lg: "span 1" }
-          : undefined,
-        p: { xs: 3, md: 4 },
-        borderRadius: 4,
         transitionDelay: `${delay}ms`,
-        position: "relative",
-        overflow: "hidden",
-        minHeight: big ? { xs: 220, md: 300 } : 220,
-        display: "flex",
-        flexDirection: "column",
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          top: -100,
-          right: -100,
-          width: 240,
-          height: 240,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle at center, rgba(99,102,241,0.18) 0%, transparent 70%)",
-          pointerEvents: "none",
-        },
-        transition:
-          "transform 280ms cubic-bezier(0.16,1,0.3,1), border-color 280ms ease",
-        "&:hover": {
-          transform: "translate3d(0,-4px,0)",
-          borderColor: "primary.main",
-        },
+        borderTop: "1px solid",
+        borderColor: "divider",
+        pt: 2.5,
       }}
     >
-      <Stack
-        direction="row"
-        spacing={1.5}
-        alignItems="center"
-        sx={{ mb: 1.5, position: "relative", zIndex: 1 }}
+      <Icon sx={{ fontSize: 22, color: "text.secondary", mb: 1.75 }} />
+      <Typography
+        sx={{
+          fontWeight: 600,
+          fontSize: "1.08rem",
+          letterSpacing: "-0.01em",
+          mb: 1,
+          color: "text.primary",
+        }}
       >
-        <Box
-          sx={{
-            width: 44,
-            height: 44,
-            borderRadius: 2.5,
-            display: "grid",
-            placeItems: "center",
-            color: "primary.main",
-            bgcolor: (theme) =>
-              theme.palette.mode === "dark"
-                ? "rgba(99,102,241,0.12)"
-                : "rgba(99,102,241,0.08)",
-            border: "1px solid",
-            borderColor: "rgba(99,102,241,0.25)",
-          }}
-        >
-          <Icon />
-        </Box>
-        <Typography
-          variant="h6"
-          sx={{ fontWeight: 700, fontSize: { xs: "1.1rem", md: "1.25rem" } }}
-        >
-          {t(`about.features.${feature.id}.title`)}
-        </Typography>
-      </Stack>
-
+        {t(`about.features.${feature.id}.title`)}
+      </Typography>
       <Typography
         sx={{
           color: "text.secondary",
-          fontSize: { xs: "0.95rem", md: "1rem" },
-          lineHeight: 1.6,
-          mb: itemList.length ? 2.5 : 0,
-          position: "relative",
-          zIndex: 1,
+          fontSize: "0.96rem",
+          lineHeight: 1.62,
         }}
       >
         {t(`about.features.${feature.id}.body`)}
       </Typography>
 
       {itemList.length > 0 && (
-        <Stack
-          direction="row"
-          spacing={1.25}
-          useFlexGap
-          flexWrap="wrap"
-          sx={{ mt: "auto", position: "relative", zIndex: 1 }}
-        >
+        <Stack direction="row" spacing={2} sx={{ mt: 1.75 }}>
           {itemList.map((label) => (
-            <Stack
+            <Typography
               key={label}
-              direction="row"
-              spacing={0.75}
-              alignItems="center"
               sx={{
-                px: 1.5,
-                py: 0.75,
-                borderRadius: 2,
-                bgcolor: (theme) =>
-                  theme.palette.mode === "dark"
-                    ? "rgba(255,255,255,0.04)"
-                    : "rgba(11,11,20,0.04)",
-                border: "1px solid",
-                borderColor: "divider",
+                color: "text.secondary",
+                fontSize: "0.82rem",
+                fontWeight: 500,
               }}
             >
-              <CheckCircleIcon
-                sx={{ fontSize: 16, color: "primary.main" }}
-              />
-              <Typography sx={{ fontSize: "0.85rem", fontWeight: 600 }}>
-                {label}
-              </Typography>
-            </Stack>
+              {label}
+            </Typography>
           ))}
         </Stack>
       )}
-    </Card>
+    </Box>
   );
 }

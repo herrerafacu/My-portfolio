@@ -52,7 +52,7 @@ export default function ScreenshotPreviewDialog({
               <Stack spacing={0.25} sx={{ flexGrow: 1, minWidth: 0 }}>
                 <Typography
                   id="project-screenshot-preview-title"
-                  sx={{ fontWeight: 800 }}
+                  sx={{ fontWeight: 600 }}
                   noWrap
                 >
                   {activeScreenshot.title ??
@@ -75,7 +75,7 @@ export default function ScreenshotPreviewDialog({
             </Stack>
           </DialogTitle>
 
-          <DialogContent sx={{ p: 0, bgcolor: "rgba(2,6,23,0.96)" }}>
+          <DialogContent sx={{ p: 0, bgcolor: "#0a0a0b" }}>
             <Box
               component="img"
               src={activeScreenshot.image}

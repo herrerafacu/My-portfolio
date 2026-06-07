@@ -13,7 +13,6 @@ import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills.jsx";
 import Footer from "./components/Footer.jsx";
 import AboutMe from "./components/AboutMe.jsx";
-import CtaBlock from "./components/CtaBlock.jsx";
 import Seo from "./components/Seo.jsx";
 
 export default function App() {
@@ -36,10 +35,9 @@ export default function App() {
         <Hero />
         <AboutMe />
         <Projects projects={projects} />
-        <Skills skillGroups={skillCapabilityGroups} courses={courses} />
         <Experience />
+        <Skills skillGroups={skillCapabilityGroups} courses={courses} />
         <Contact />
-        <CtaBlock />
       </Box>
       <Footer />
     </ThemeProvider>

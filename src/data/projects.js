@@ -1,4 +1,3 @@
-import faqImage from "../assets/fAQ Solution image.webp";
 import pandapediaAbout from "../assets/pandapedia/about.webp";
 import pandapediaAccount from "../assets/pandapedia/account.webp";
 import pandapediaExplore from "../assets/pandapedia/explorar.webp";
@@ -9,15 +8,6 @@ import pandapediaLibrary from "../assets/pandapedia/pandateca.webp";
 import pandapediaStats from "../assets/pandapedia/stats.webp";
 
 export const projects = [
-  {
-    id: "faq-solutions",
-    i18nKey: "faqSolutions",
-    title: "fAQ Solutions - Landing",
-    techStack: ["HTML", "CSS Tailwind", "JavaScript", "Vercel"],
-    link: "https://faq-solutions.vercel.app/",
-    repo: null,
-    image: faqImage,
-  },
   {
     id: "pandapedia",
     i18nKey: "pandapedia",

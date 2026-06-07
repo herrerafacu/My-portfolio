@@ -1,13 +1,8 @@
-:root {
-  --purple: #6366f1;
-  --purple-light: #818cf8;
-  --purple-dark: #4f46e5;
-}
-
 html {
   scroll-behavior: smooth;
   width: 100%;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -25,172 +20,78 @@ body {
   min-height: 100vh;
 }
 
-/* ===== Reveal on scroll ===== */
+/* ===== Reveal on scroll =====
+   One restrained gesture: a short, soft fade-up. No directional fly-ins,
+   no scaling, no parallax. Just enough to feel alive, not enough to perform. */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 28px, 0);
+  transform: translate3d(0, 12px, 0);
   transition:
-    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.reveal:not(.is-visible) {
-  will-change: opacity, transform;
-}
-
-.reveal.reveal-left {
-  transform: translate3d(-40px, 0, 0);
-}
-
-.reveal.reveal-right {
-  transform: translate3d(40px, 0, 0);
-}
-
-.reveal.reveal-scale {
-  transform: scale(0.94) translateZ(0);
-}
-
-.reveal.is-visible {
+.reveal[data-revealed] {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  will-change: auto;
 }
 
-/* ===== Marquee for tech logos ===== */
-@keyframes marquee-left {
+/* ===== Hero tech marquee =====
+   Slow, linear, no easing curve, no bounce. Lives quietly in the background. */
+@keyframes hero-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-@keyframes marquee-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.marquee-track {
+.hero-marquee {
   display: flex;
   width: max-content;
-  animation: marquee-left 38s linear infinite;
+  align-items: center;
+  animation: hero-marquee 55s linear infinite;
   will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
-.marquee-track.reverse {
-  animation: marquee-right 38s linear infinite;
-}
-
-.marquee-mask {
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    #000 12%,
-    #000 88%,
-    transparent 100%
-  );
+.hero-marquee-mask {
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    #000 12%,
-    #000 88%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
     transparent 100%
   );
 }
 
-/* ===== Hero animations (legacy compat) ===== */
-@keyframes heroTextIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroCtaIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* ===== Project card glow ===== */
-.project-card-glow {
-  position: relative;
-}
-.project-card-glow::before {
-  content: "";
-  position: absolute;
-  inset: -1px -1px auto -1px;
-  height: 60px;
-  background: linear-gradient(
-    180deg,
-    rgba(99, 102, 241, 0.35) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
-  border-radius: 16px 16px 0 0;
-  z-index: 0;
-}
-
-/* ===== Paint containment for off-screen sections ===== */
-section {
+/* ===== Paint containment for off-screen page sections =====
+   Scoped to direct children of <main> on purpose: the project modal renders
+   its own <section> elements inside a portal, and content-visibility there
+   would blank them out as 720px placeholders (they look "erased", especially
+   after a re-render such as a theme toggle). Keep the optimization to the page. */
+main > section {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
-}
-
-/* Hero stays rendered so first paint includes it */
-section#home {
-  content-visibility: visible;
+  contain-intrinsic-size: 1px 720px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-left,
-  .reveal-right,
-  .reveal-scale {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .marquee-track,
-  .marquee-track.reverse {
+  .hero-marquee {
     animation: none;
   }
 }

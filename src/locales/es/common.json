@@ -81,6 +81,7 @@
   "contactSection": {
     "label": "Contacto",
     "title": "¿Trabajamos juntos?",
+    "availability": "Disponible para nuevas oportunidades fullstack — remoto o híbrido",
     "lead": "Si estás buscando un Fullstack para sumar a tu equipo o tenés un proyecto en mente, escribime. Respondo en menos de 24h.",
     "find_me": "También me encontrás acá:",
     "form_title": "Mandame un mensaje",
@@ -92,11 +93,6 @@
     "form_message": "Contame de qué se trata...",
     "form_submit": "Enviar mensaje",
     "form_or_email": "O directo a:"
-  },
-  "ctaBlock": {
-    "title": "Gracias por scrollear hasta acá",
-    "subtitle": "Si llegaste hasta abajo es porque algo te interesó. Estoy a un mail de distancia.",
-    "cta": "Escribime"
   },
   "projects": {
     "title": "Proyectos personales",
@@ -128,11 +124,6 @@
       "screenshot_alt": "Captura {{current}} de {{title}}"
     },
     "items": {
-      "faqSolutions": {
-        "title": "fAQ Solutions - Landing",
-        "shortDescription": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance.",
-        "description": "Landing con foco en conversión: carrusel, formulario, diseño responsive y performance."
-      },
       "pandapedia": {
         "title": "PandaPedia",
         "subtitle": "Plataforma fullstack para gestionar, explorar y analizar contenido multimedia",
@@ -302,7 +293,6 @@
       }
     },
     "courses": "Formación complementaria",
-    "courses_note": "Cursos como soporte, no como foco principal",
     "open_course": "Abrir curso {{title}}"
   },
   "experience": {

@@ -81,10 +81,9 @@ export default function ProjectDetailsDialog({ open, project, onClose }) {
         slotProps={{
           paper: {
             sx: {
-              borderRadius: fullScreen ? 0 : "8px",
+              borderRadius: fullScreen ? 0 : "12px",
               bgcolor: "background.paper",
-              backgroundImage:
-                "linear-gradient(180deg, rgba(15,23,42,0.98), rgba(2,6,23,0.98))",
+              backgroundImage: "none",
               border: fullScreen ? 0 : "1px solid",
               borderColor: "divider",
               overflow: "hidden",
@@ -123,13 +122,13 @@ export default function ProjectDetailsDialog({ open, project, onClose }) {
             py: 2,
             borderTop: "1px solid",
             borderColor: "divider",
-            bgcolor: "rgba(2,6,23,0.62)",
+            bgcolor: "background.default",
           }}
         >
           <Button
             onClick={onClose}
             variant="outlined"
-            sx={{ borderRadius: "6px" }}
+            sx={{ borderRadius: "8px" }}
           >
             {t("projects.close")}
           </Button>

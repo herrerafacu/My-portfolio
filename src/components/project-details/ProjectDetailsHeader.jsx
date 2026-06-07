@@ -15,11 +15,10 @@ export default function ProjectDetailsHeader({ project, stack, onClose, t }) {
         sx={{
           position: "relative",
           px: { xs: 2.5, md: 5 },
-          py: { xs: 3.5, md: 5 },
+          py: { xs: 3.5, md: 4.5 },
           borderBottom: "1px solid",
           borderColor: "divider",
-          background:
-            "linear-gradient(135deg, rgba(25,118,210,0.22), rgba(0,188,212,0.1) 45%, rgba(15,23,42,0))",
+          bgcolor: "background.default",
         }}
       >
         <IconButton
@@ -36,11 +35,15 @@ export default function ProjectDetailsHeader({ project, stack, onClose, t }) {
           <CloseIcon />
         </IconButton>
 
-        <Stack spacing={2.25} sx={{ maxWidth: 920, pr: { xs: 0, md: 0 } }}>
+        <Stack spacing={2} sx={{ maxWidth: 920, pr: { xs: 4, md: 5 } }}>
           <Typography
-            variant="overline"
-            color="primary"
-            sx={{ fontWeight: 800, letterSpacing: 0 }}
+            sx={{
+              color: "primary.main",
+              fontWeight: 600,
+              fontSize: "0.78rem",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+            }}
           >
             {t("projects.modal.case_study")}
           </Typography>
@@ -49,24 +52,23 @@ export default function ProjectDetailsHeader({ project, stack, onClose, t }) {
             <Typography
               id="project-dialog-title"
               component="h2"
-              variant="h3"
               sx={{
-                fontWeight: 900,
-                lineHeight: 1,
-                fontSize: { xs: "2.4rem", sm: "3rem", md: "3.6rem" },
+                fontWeight: 600,
+                lineHeight: 1.05,
+                letterSpacing: "-0.035em",
+                fontSize: { xs: "2.1rem", sm: "2.6rem", md: "3rem" },
               }}
             >
               {project.title}
             </Typography>
             {project.subtitle && (
               <Typography
-                variant="h6"
-                color="secondary"
                 sx={{
-                  fontWeight: 700,
-                  lineHeight: 1.35,
+                  color: "text.secondary",
+                  fontWeight: 500,
+                  lineHeight: 1.4,
                   maxWidth: 780,
-                  fontSize: { xs: "1.05rem", sm: "1.25rem" },
+                  fontSize: { xs: "1.02rem", sm: "1.15rem" },
                 }}
               >
                 {project.subtitle}
@@ -77,27 +79,23 @@ export default function ProjectDetailsHeader({ project, stack, onClose, t }) {
           <Typography
             color="text.secondary"
             sx={{
-              maxWidth: 860,
-              fontSize: { xs: "1rem", md: "1.08rem" },
-              lineHeight: 1.75,
+              maxWidth: 820,
+              fontSize: { xs: "0.98rem", md: "1.05rem" },
+              lineHeight: 1.7,
             }}
           >
             {project.description}
           </Typography>
 
           {stack.length > 0 && (
-            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ pt: 0.5 }}>
               {stack.map((item) => (
                 <Chip
                   key={item}
                   size="small"
                   label={item}
                   variant="outlined"
-                  sx={{
-                    borderRadius: "6px",
-                    bgcolor: "rgba(255,255,255,0.04)",
-                    fontWeight: 700,
-                  }}
+                  sx={{ borderRadius: "7px", fontWeight: 500 }}
                 />
               ))}
             </Stack>

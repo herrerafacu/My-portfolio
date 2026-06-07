@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, Button } from "@mui/material";
+import { Box, Stack, Typography, Button, Divider } from "@mui/material";
 import {
   ArrowForward as ArrowForwardIcon,
   Download as DownloadIcon,
@@ -37,33 +37,12 @@ export default function Hero() {
 
   return (
     <Box id="home" sx={heroSX}>
-      <Stack spacing={0} alignItems="center" sx={heroContentSX}>
-        <Box
-          sx={{
-            position: "relative",
-            width: { xs: 96, md: 112 },
-            height: { xs: 96, md: 112 },
-            mb: { xs: 3, md: 4 },
-            opacity: 0,
-            transform: "translateY(10px)",
-            animation:
-              "heroTextIn 700ms cubic-bezier(0.16, 1, 0.3, 1) 40ms forwards",
-            "@media (prefers-reduced-motion: reduce)": {
-              opacity: 1,
-              transform: "none",
-              animation: "none",
-            },
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              inset: -10,
-              borderRadius: "50%",
-              background:
-                "radial-gradient(circle at center, rgba(99,102,241,0.55) 0%, rgba(99,102,241,0) 70%)",
-              zIndex: -1,
-              filter: "blur(2px)",
-            },
-          }}
+      <Box sx={heroContentSX}>
+        <Stack
+          direction="row"
+          spacing={1.75}
+          alignItems="center"
+          sx={{ mb: { xs: 4, md: 5 } }}
         >
           <Box
             component="img"
@@ -71,24 +50,42 @@ export default function Hero() {
             alt="Facundo Herrera"
             loading="eager"
             sx={{
-              width: "100%",
-              height: "100%",
+              width: 52,
+              height: 52,
               borderRadius: "50%",
               objectFit: "cover",
               objectPosition: "center 20%",
-              border: "2px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark"
-                  ? "rgba(255,255,255,0.12)"
-                  : "rgba(11,11,20,0.12)",
-              boxShadow: "0 12px 32px rgba(99,102,241,0.35)",
-              display: "block",
+              border: "1px solid",
+              borderColor: "divider",
+              flexShrink: 0,
             }}
           />
-        </Box>
-        <Typography component="p" sx={heroGreetingSX}>
-          {t("hero.greeting")}
-        </Typography>
+          <Stack spacing={0.4}>
+            <Typography component="p" sx={heroGreetingSX}>
+              {t("hero.greeting")}
+            </Typography>
+            <Stack direction="row" spacing={0.9} alignItems="center">
+              <Box
+                sx={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: "50%",
+                  bgcolor: "#22a06b",
+                  flexShrink: 0,
+                }}
+              />
+              <Typography
+                sx={{
+                  color: "text.secondary",
+                  fontSize: "0.85rem",
+                  fontWeight: 500,
+                }}
+              >
+                {t("hero.badge")}
+              </Typography>
+            </Stack>
+          </Stack>
+        </Stack>
 
         <Typography component="h1" sx={heroTitleSX}>
           {t("hero.title_prefix")}
@@ -98,9 +95,7 @@ export default function Hero() {
 
         <Stack
           direction={{ xs: "column", sm: "row" }}
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
+          spacing={1.5}
           useFlexGap
           flexWrap="wrap"
           sx={heroActionsSX}
@@ -125,62 +120,66 @@ export default function Hero() {
             {t("hero.cta_cv")}
           </Button>
         </Stack>
-      </Stack>
 
-      <Box
-        className="marquee-mask"
-        sx={{
-          mt: { xs: 12, md: 16 },
-          width: "100%",
-          maxWidth: 1400,
-          mx: "auto",
-          overflow: "hidden",
-        }}
-      >
-        <Typography
-          sx={{
-            color: "text.secondary",
-            fontSize: "0.8rem",
-            textAlign: "center",
-            mb: 3.5,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            fontWeight: 500,
-          }}
+        <Divider sx={{ mt: { xs: 6, md: 9 }, mb: 3, borderColor: "divider" }} />
+
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={{ xs: 1.5, sm: 3 }}
+          alignItems={{ xs: "flex-start", sm: "center" }}
         >
-          {t("hero.tech_label")}
-        </Typography>
-        <Box className="marquee-track">
-          {loop.map((tech, i) => (
-            <Box
-              key={`${tech}-${i}`}
-              sx={{
-                flex: "0 0 auto",
-                mx: { xs: 2, md: 3 },
-                px: { xs: 2.5, md: 3.5 },
-                py: 1.5,
-                borderRadius: 999,
-                border: "1px solid",
-                borderColor: "divider",
-                color: "text.primary",
-                fontWeight: 600,
-                fontSize: { xs: "0.9rem", md: "1rem" },
-                whiteSpace: "nowrap",
-                backgroundColor: (theme) =>
-                  theme.palette.mode === "dark"
-                    ? "rgba(255,255,255,0.02)"
-                    : "#ffffff",
-                transition: "border-color 240ms ease, color 240ms ease",
-                "&:hover": {
-                  borderColor: "primary.main",
-                  color: "primary.main",
-                },
-              }}
-            >
-              {tech}
+          <Typography
+            sx={{
+              color: "text.secondary",
+              fontSize: "0.78rem",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              fontWeight: 500,
+              flexShrink: 0,
+              whiteSpace: "nowrap",
+            }}
+          >
+            {t("hero.tech_label")}
+          </Typography>
+
+          <Box
+            className="hero-marquee-mask"
+            sx={{ overflow: "hidden", width: "100%", minWidth: 0 }}
+          >
+            <Box className="hero-marquee" aria-hidden="true">
+              {loop.map((tech, i) => (
+                <Box
+                  key={`${tech}-${i}`}
+                  component="span"
+                  sx={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  <Typography
+                    component="span"
+                    sx={{
+                      color: "text.primary",
+                      fontSize: "0.9rem",
+                      fontWeight: 500,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {tech}
+                  </Typography>
+                  <Box
+                    component="span"
+                    sx={{
+                      mx: { xs: 1.75, md: 2.5 },
+                      width: 3,
+                      height: 3,
+                      borderRadius: "50%",
+                      bgcolor: "text.disabled",
+                      flexShrink: 0,
+                    }}
+                  />
+                </Box>
+              ))}
             </Box>
-          ))}
-        </Box>
+          </Box>
+        </Stack>
       </Box>
     </Box>
   );

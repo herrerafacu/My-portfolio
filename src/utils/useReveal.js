@@ -7,11 +7,17 @@ export default function useReveal(options = {}) {
     const el = ref.current;
     if (!el) return;
 
+    // Mark "revealed" with a data attribute, not a class. React never manages
+    // `data-revealed` (it isn't a JSX prop), so it survives re-renders that
+    // rewrite the element's className — most notably a theme toggle, which
+    // regenerates the Emotion class hash for theme-dependent `sx`. A plain
+    // `is-visible` class would get wiped by that rewrite and the content would
+    // fade back out until the next reload.
     if (
       typeof window === "undefined" ||
       typeof IntersectionObserver === "undefined"
     ) {
-      el.classList.add("is-visible");
+      el.setAttribute("data-revealed", "");
       return;
     }
 
@@ -19,7 +25,7 @@ export default function useReveal(options = {}) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.setAttribute("data-revealed", "");
             observer.unobserve(entry.target);
           }
         });

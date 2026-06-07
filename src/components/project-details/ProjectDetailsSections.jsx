@@ -86,15 +86,15 @@ function CapabilitiesSection({ skills, t }) {
             <Box key={skillId ?? getText(skill)} sx={{ ...panelSx, p: 2 }}>
               <Stack direction="row" spacing={1.5} alignItems="flex-start">
                 <SectionIcon icon={Icon} />
-                <Stack spacing={0.7}>
-                  <Typography sx={{ fontWeight: 800, lineHeight: 1.25 }}>
+                <Stack spacing={0.6}>
+                  <Typography sx={{ fontWeight: 600, lineHeight: 1.3 }}>
                     {skill.title ?? getText(skill)}
                   </Typography>
                   {skill.description && (
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ lineHeight: 1.65 }}
+                      sx={{ lineHeight: 1.6 }}
                     >
                       {skill.description}
                     </Typography>
@@ -151,16 +151,14 @@ function ScreenshotsSection({ project, screenshots, onPreviewOpen, t }) {
                 textAlign: "left",
                 cursor: "pointer",
                 overflow: "hidden",
-                transition:
-                  "transform 160ms ease, border-color 160ms ease, background 160ms ease",
+                transition: "border-color 160ms ease, transform 160ms ease",
                 "&:hover": {
                   transform: "translateY(-2px)",
-                  borderColor: "secondary.main",
-                  bgcolor: "rgba(15, 23, 42, 0.86)",
+                  borderColor: "text.disabled",
                 },
                 "&:focus-visible": {
                   outline: "2px solid",
-                  outlineColor: "secondary.main",
+                  outlineColor: "primary.main",
                   outlineOffset: 2,
                 },
               }}
@@ -169,8 +167,10 @@ function ScreenshotsSection({ project, screenshots, onPreviewOpen, t }) {
                 sx={{
                   position: "relative",
                   aspectRatio: "16 / 10",
-                  bgcolor: "rgba(255,255,255,0.04)",
+                  bgcolor: "background.default",
                   overflow: "hidden",
+                  borderBottom: "1px solid",
+                  borderColor: "divider",
                 }}
               >
                 <Box
@@ -190,21 +190,25 @@ function ScreenshotsSection({ project, screenshots, onPreviewOpen, t }) {
                     position: "absolute",
                     right: 10,
                     bottom: 10,
-                    width: 34,
-                    height: 34,
+                    width: 32,
+                    height: 32,
                     borderRadius: "8px",
                     display: "grid",
                     placeItems: "center",
-                    color: "common.white",
-                    bgcolor: "rgba(2,6,23,0.78)",
-                    border: "1px solid rgba(255,255,255,0.18)",
+                    color: "text.primary",
+                    bgcolor: (theme) =>
+                      theme.palette.mode === "dark"
+                        ? "rgba(10,10,11,0.72)"
+                        : "rgba(255,255,255,0.9)",
+                    border: "1px solid",
+                    borderColor: "divider",
                   }}
                 >
-                  <OpenInFullIcon fontSize="small" />
+                  <OpenInFullIcon sx={{ fontSize: 16 }} />
                 </Box>
               </Box>
-              <Stack spacing={0.75} sx={{ p: 1.75 }}>
-                <Typography sx={{ fontWeight: 800, lineHeight: 1.25 }}>
+              <Stack spacing={0.5} sx={{ p: 1.75 }}>
+                <Typography sx={{ fontWeight: 600, lineHeight: 1.3 }}>
                   {title}
                 </Typography>
                 {screenshot.description && (
@@ -237,10 +241,9 @@ function HighlightsSection({ highlights, t }) {
           <ListPanel key={highlight.id ?? getText(highlight)}>
             <CheckCircleOutlineIcon
               fontSize="small"
-              color="secondary"
-              sx={{ flexShrink: 0 }}
+              sx={{ flexShrink: 0, color: "text.secondary" }}
             />
-            <Typography sx={{ fontWeight: 700, lineHeight: 1.35 }}>
+            <Typography sx={{ fontWeight: 500, lineHeight: 1.4 }}>
               {getText(highlight)}
             </Typography>
           </ListPanel>
@@ -261,7 +264,7 @@ function TechStackSection({ stack, t }) {
             label={item}
             icon={<ViewModuleIcon fontSize="small" />}
             variant="outlined"
-            sx={{ borderRadius: "6px", fontWeight: 700 }}
+            sx={{ borderRadius: "7px", fontWeight: 500 }}
           />
         ))}
       </Stack>
@@ -277,7 +280,7 @@ function SecuritySection({ security, t }) {
         {security.map((item) => (
           <ListPanel key={item.id ?? getText(item)}>
             <SectionIcon icon={SecurityIcon} size={32} />
-            <Typography sx={{ fontWeight: 700, lineHeight: 1.35 }}>
+            <Typography sx={{ fontWeight: 500, lineHeight: 1.4 }}>
               {getText(item)}
             </Typography>
           </ListPanel>
@@ -318,7 +321,7 @@ function DeploymentSection({ deployment, deploymentItems, t }) {
               <Stack spacing={1.5}>
                 <Stack direction="row" spacing={1.25} alignItems="center">
                   <SectionIcon icon={Icon} size={36} />
-                  <Typography sx={{ fontWeight: 900, lineHeight: 1.2 }}>
+                  <Typography sx={{ fontWeight: 600, lineHeight: 1.2 }}>
                     {item.title ?? getText(item)}
                   </Typography>
                 </Stack>
@@ -326,7 +329,7 @@ function DeploymentSection({ deployment, deploymentItems, t }) {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ lineHeight: 1.65 }}
+                    sx={{ lineHeight: 1.6 }}
                   >
                     {item.description}
                   </Typography>
@@ -339,7 +342,7 @@ function DeploymentSection({ deployment, deploymentItems, t }) {
                         label={technology}
                         size="small"
                         variant="outlined"
-                        sx={{ borderRadius: "6px", fontWeight: 700 }}
+                        sx={{ borderRadius: "7px", fontWeight: 500 }}
                       />
                     ))}
                   </Stack>
@@ -356,14 +359,7 @@ function DeploymentSection({ deployment, deploymentItems, t }) {
 function LiveAccessSection({ liveUrl, project, t }) {
   return (
     <Box component="section" sx={{ ...sectionSx, pb: 0 }}>
-      <Box
-        sx={{
-          ...panelSx,
-          p: { xs: 2.25, md: 3 },
-          background:
-            "linear-gradient(135deg, rgba(25,118,210,0.2), rgba(0,188,212,0.09) 55%, rgba(15,23,42,0.74))",
-        }}
-      >
+      <Box sx={{ ...panelSx, p: { xs: 2.25, md: 3 } }}>
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={2}
@@ -372,13 +368,17 @@ function LiveAccessSection({ liveUrl, project, t }) {
         >
           <Stack spacing={0.6}>
             <Typography
-              variant="overline"
-              color="primary"
-              sx={{ fontWeight: 800, letterSpacing: 0 }}
+              sx={{
+                color: "primary.main",
+                fontWeight: 600,
+                fontSize: "0.78rem",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
             >
               {t("projects.modal.live_access")}
             </Typography>
-            <Typography sx={{ fontWeight: 800, lineHeight: 1.35 }}>
+            <Typography sx={{ fontWeight: 600, lineHeight: 1.4 }}>
               {t("projects.modal.live_app_intro")}
             </Typography>
           </Stack>
@@ -392,7 +392,7 @@ function LiveAccessSection({ liveUrl, project, t }) {
               title: project.title,
             })}
             sx={{
-              borderRadius: "6px",
+              borderRadius: "8px",
               minWidth: { xs: "100%", sm: 180 },
             }}
           >
@@ -446,9 +446,13 @@ function SectionIcon({ icon, size = 34 }) {
         display: "grid",
         placeItems: "center",
         flexShrink: 0,
-        color: "secondary.main",
-        bgcolor: "rgba(0,188,212,0.11)",
-        border: "1px solid rgba(0,188,212,0.22)",
+        color: "text.secondary",
+        bgcolor: (theme) =>
+          theme.palette.mode === "dark"
+            ? "rgba(255,255,255,0.04)"
+            : "rgba(0,0,0,0.04)",
+        border: "1px solid",
+        borderColor: "divider",
       }}
     >
       <IconComponent fontSize="small" />

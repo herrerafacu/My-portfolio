@@ -82,6 +82,7 @@
   "contactSection": {
     "label": "Contact",
     "title": "Want to work together?",
+    "availability": "Available for new fullstack roles — remote or hybrid",
     "lead": "If you're looking for a Fullstack dev to join your team or have a project in mind, drop me a line. I reply within 24h.",
     "find_me": "You can also find me here:",
     "form_title": "Send me a message",
@@ -93,11 +94,6 @@
     "form_message": "What's it about?",
     "form_submit": "Send message",
     "form_or_email": "Or directly:"
-  },
-  "ctaBlock": {
-    "title": "Thanks for scrolling this far",
-    "subtitle": "If you made it down here, something caught your attention. I'm one email away.",
-    "cta": "Get in touch"
   },
   "projects": {
     "title": "Personal projects",
@@ -129,11 +125,6 @@
       "screenshot_alt": "Screenshot {{current}} of {{title}}"
     },
     "items": {
-      "faqSolutions": {
-        "title": "fAQ Solutions - Landing",
-        "shortDescription": "Landing page focused on conversion: carousel, form, responsive design and performance.",
-        "description": "Landing page focused on conversion: carousel, form, responsive design and performance."
-      },
       "pandapedia": {
         "title": "PandaPedia",
         "subtitle": "Fullstack platform to manage, explore and analyze multimedia content",

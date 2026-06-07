@@ -37,8 +37,9 @@ export const sectionSx = {
 export const panelSx = {
   border: "1px solid",
   borderColor: "divider",
-  borderRadius: "8px",
-  bgcolor: "rgba(15, 23, 42, 0.68)",
+  borderRadius: "10px",
+  bgcolor: (theme) =>
+    theme.palette.mode === "dark" ? "rgba(255,255,255,0.02)" : "#fafafa",
 };
 
 export function getStackLabel(item) {

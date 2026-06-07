@@ -1,16 +1,8 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  Typography,
-  Chip,
-  Button,
-  Stack,
-} from "@mui/material";
+import { Box, Typography, Chip, Button, Stack } from "@mui/material";
 import {
   OpenInNew as OpenInNewIcon,
   Lock as LockIcon,
-  ArrowOutward as ArrowOutwardIcon,
+  ArrowForward as ArrowForwardIcon,
 } from "@mui/icons-material";
 import { lazy, Suspense, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -97,7 +89,7 @@ export default function Projects({ projects }) {
         <Box sx={sectionInnerSX}>
           <Stack
             spacing={0}
-            sx={{ mb: { xs: 5, md: 8 } }}
+            sx={{ mb: { xs: 6, md: 9 } }}
             ref={headerRef}
             className="reveal"
           >
@@ -112,27 +104,17 @@ export default function Projects({ projects }) {
             </Typography>
           </Stack>
 
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                md: "repeat(2, 1fr)",
-              },
-              gap: { xs: 3, md: 4 },
-            }}
-          >
+          <Stack spacing={{ xs: 8, md: 14 }}>
             {mergedProjects.map((project, idx) => (
-              <ProjectCard
+              <ProjectRow
                 key={project.id}
                 project={project}
                 t={t}
                 onOpenDetails={() => handleOpenDetails(project)}
-                delay={idx * 120}
-                fromLeft={idx % 2 === 0}
+                reverse={idx % 2 === 1}
               />
             ))}
-          </Box>
+          </Stack>
         </Box>
       </Box>
 
@@ -149,200 +131,166 @@ export default function Projects({ projects }) {
   );
 }
 
-function ProjectCard({ project, t, onOpenDetails, delay, fromLeft }) {
+function ProjectRow({ project, t, onOpenDetails, reverse }) {
   const ref = useReveal();
   const hasDetails = hasProjectDetails(project);
 
   return (
     <Box
       ref={ref}
-      className={`reveal ${fromLeft ? "reveal-left" : "reveal-right"}`}
-      sx={{ transitionDelay: `${delay}ms` }}
+      className="reveal"
+      sx={{
+        display: "grid",
+        gridTemplateColumns: { xs: "1fr", md: "1.05fr 1fr" },
+        gap: { xs: 3.5, md: 7 },
+        alignItems: "center",
+      }}
     >
-      <Card
-        className="project-card-glow"
+      {/* Screenshot — the product, shown plainly in a clean frame */}
+      <Box
         sx={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: 4,
+          order: { xs: 0, md: reverse ? 1 : 0 },
+          position: "relative",
+          borderRadius: 2.5,
           overflow: "hidden",
-          p: { xs: 2, md: 2.5 },
-          transition:
-            "transform 360ms ease, border-color 360ms ease, box-shadow 360ms ease",
-          "&:hover": {
-            transform: "translateY(-6px)",
-            borderColor: "primary.main",
-          },
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
         }}
       >
         <Box
+          component="img"
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
           sx={{
-            position: "relative",
-            borderRadius: 3,
-            overflow: "hidden",
-            mb: 2.5,
-            border: "1px solid",
-            borderColor: "divider",
+            width: "100%",
+            height: { xs: 240, sm: 320, md: 400 },
+            objectFit: "cover",
+            objectPosition: "top center",
+            display: "block",
           }}
-        >
-          <CardMedia
-            component="img"
-            image={project.image}
-            alt={project.title}
-            loading="lazy"
+        />
+        {project.privateRepo && (
+          <Chip
+            icon={<LockIcon sx={{ fontSize: 15 }} />}
+            label={t("projectsSection.private_label")}
+            size="small"
             sx={{
-              width: "100%",
-              height: { xs: 220, md: 280 },
-              objectFit: "cover",
-              transition: "transform 600ms ease",
-              "&:hover": { transform: "scale(1.04)" },
+              position: "absolute",
+              top: 12,
+              left: 12,
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark"
+                  ? "rgba(10,10,11,0.78)"
+                  : "rgba(255,255,255,0.9)",
+              color: "text.secondary",
+              backdropFilter: "blur(6px)",
+              border: "1px solid",
+              borderColor: "divider",
+              fontWeight: 500,
+              "& .MuiChip-icon": { color: "text.secondary", ml: 0.5 },
             }}
           />
-          {project.privateRepo && (
-            <Chip
-              icon={<LockIcon sx={{ fontSize: 16 }} />}
-              label={t("projectsSection.private_label")}
-              size="small"
-              sx={{
-                position: "absolute",
-                top: 12,
-                right: 12,
-                bgcolor: "rgba(0,0,0,0.65)",
-                color: "#fff",
-                backdropFilter: "blur(8px)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                "& .MuiChip-icon": { color: "#fff" },
-              }}
-            />
-          )}
-        </Box>
+        )}
+      </Box>
 
-        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", px: 0.5 }}>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="flex-start"
-            spacing={2}
-            sx={{ mb: 1 }}
-          >
-            <Typography
-              variant="h5"
-              sx={{ fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.01em" }}
-            >
-              {project.title}
-            </Typography>
-            {(project.link || project.liveUrl) && (
-              <Button
-                aria-label={t("projects.view_live_app")}
-                href={project.liveUrl || project.link}
-                target="_blank"
-                rel="noreferrer"
-                sx={{
-                  minWidth: 0,
-                  width: 38,
-                  height: 38,
-                  p: 0,
-                  borderRadius: "50%",
-                  border: "1px solid",
-                  borderColor: "divider",
-                  color: "text.primary",
-                  flexShrink: 0,
-                  "&:hover": {
-                    borderColor: "primary.main",
-                    color: "primary.main",
-                    bgcolor: "transparent",
-                  },
-                }}
-              >
-                <ArrowOutwardIcon sx={{ fontSize: 18 }} />
-              </Button>
-            )}
-          </Stack>
+      {/* Narrative */}
+      <Box sx={{ order: { xs: 1, md: reverse ? 0 : 1 } }}>
+        <Typography
+          component="h3"
+          sx={{
+            fontWeight: 600,
+            fontSize: { xs: "1.6rem", md: "2rem" },
+            letterSpacing: "-0.025em",
+            lineHeight: 1.15,
+            mb: project.subtitle ? 1 : 1.5,
+          }}
+        >
+          {project.title}
+        </Typography>
 
-          {project.subtitle && (
-            <Typography
-              variant="body2"
-              sx={{ color: "primary.main", fontWeight: 600, mb: 1.25 }}
-            >
-              {project.subtitle}
-            </Typography>
-          )}
-
+        {project.subtitle && (
           <Typography
-            variant="body2"
             sx={{
-              color: "text.secondary",
-              lineHeight: 1.6,
-              mb: 2,
-              fontSize: "0.95rem",
+              color: "text.primary",
+              fontWeight: 500,
+              fontSize: { xs: "1.02rem", md: "1.1rem" },
+              lineHeight: 1.4,
+              mb: 1.75,
             }}
           >
-            {project.shortDescription}
+            {project.subtitle}
           </Typography>
+        )}
 
-          <Stack
-            direction="row"
-            spacing={0.75}
-            useFlexGap
-            flexWrap="wrap"
-            sx={{ mb: 2 }}
-          >
-            {project.stack.map((item) => (
-              <Chip
-                key={item}
-                size="small"
-                label={item}
-                variant="outlined"
-                sx={{ borderRadius: 1.5 }}
-              />
-            ))}
-          </Stack>
+        <Typography
+          sx={{
+            color: "text.secondary",
+            lineHeight: 1.65,
+            fontSize: "1rem",
+            mb: 3,
+            maxWidth: 540,
+          }}
+        >
+          {project.shortDescription}
+        </Typography>
 
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{ mt: "auto", flexWrap: "wrap", gap: 1 }}
-          >
-            {project.link && !project.liveUrl && (
-              <Button
-                variant="outlined"
-                size="small"
-                endIcon={<OpenInNewIcon />}
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                sx={{ borderRadius: 2 }}
-              >
-                {t("projects.go_landing")}
-              </Button>
-            )}
-            {project.liveUrl && (
-              <Button
-                variant="outlined"
-                size="small"
-                endIcon={<OpenInNewIcon />}
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                sx={{ borderRadius: 2 }}
-              >
-                {t("projects.view_live_app")}
-              </Button>
-            )}
-            {hasDetails && (
-              <Button
-                variant="contained"
-                size="small"
-                onClick={onOpenDetails}
-                sx={{ borderRadius: 2 }}
-              >
-                {t("projects.details")}
-              </Button>
-            )}
-          </Stack>
-        </Box>
-      </Card>
+        <Stack
+          direction="row"
+          spacing={0.75}
+          useFlexGap
+          flexWrap="wrap"
+          sx={{ mb: 3.5 }}
+        >
+          {project.stack.map((item) => (
+            <Chip
+              key={item}
+              size="small"
+              label={item}
+              variant="outlined"
+              sx={{ borderRadius: 1.5 }}
+            />
+          ))}
+        </Stack>
+
+        <Stack direction="row" spacing={1.25} sx={{ flexWrap: "wrap", gap: 1.25 }}>
+          {hasDetails && (
+            <Button
+              variant="contained"
+              size="medium"
+              onClick={onOpenDetails}
+              endIcon={<ArrowForwardIcon />}
+            >
+              {t("projects.details")}
+            </Button>
+          )}
+          {project.liveUrl && (
+            <Button
+              variant="outlined"
+              size="medium"
+              endIcon={<OpenInNewIcon />}
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("projects.view_live_app")}
+            </Button>
+          )}
+          {project.link && !project.liveUrl && (
+            <Button
+              variant="contained"
+              size="medium"
+              endIcon={<OpenInNewIcon />}
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("projects.go_landing")}
+            </Button>
+          )}
+        </Stack>
+      </Box>
     </Box>
   );
 }

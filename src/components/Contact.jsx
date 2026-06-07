@@ -62,15 +62,15 @@ export default function Contact() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            gap: { xs: 4, md: 8 },
-            alignItems: "center",
+            gridTemplateColumns: { xs: "1fr", md: "1fr 1.05fr" },
+            gap: { xs: 5, md: 9 },
+            alignItems: "start",
           }}
         >
           <Stack
             spacing={3}
             ref={leftRef}
-            className="reveal reveal-left"
+            className="reveal"
             sx={{ textAlign: "left" }}
           >
             <Stack spacing={0}>
@@ -81,21 +81,41 @@ export default function Contact() {
                 {t("contactSection.title")}
               </Typography>
             </Stack>
+
+            <Stack direction="row" spacing={1} alignItems="center">
+              <Box
+                sx={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: "50%",
+                  bgcolor: "#22a06b",
+                  flexShrink: 0,
+                }}
+              />
+              <Typography
+                sx={{
+                  color: "text.primary",
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                }}
+              >
+                {t("contactSection.availability")}
+              </Typography>
+            </Stack>
+
             <Typography
               sx={{
                 color: "text.secondary",
                 fontSize: { xs: "1rem", md: "1.1rem" },
-                lineHeight: 1.6,
-                maxWidth: 460,
+                lineHeight: 1.62,
+                maxWidth: 440,
               }}
             >
               {t("contactSection.lead")}
             </Typography>
 
             <Stack spacing={1.5} sx={{ pt: 1 }}>
-              <Typography
-                sx={{ color: "text.secondary", fontSize: "0.95rem" }}
-              >
+              <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
                 {t("contactSection.find_me")}
               </Typography>
               <Stack direction="row" spacing={1.25}>
@@ -103,16 +123,16 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/facundo-herrera-289a111b9/"
                   label="LinkedIn"
                 >
-                  <LinkedInIcon />
+                  <LinkedInIcon fontSize="small" />
                 </SocialButton>
                 <SocialButton
                   href="https://github.com/herrerafacu"
                   label="GitHub"
                 >
-                  <GitHubIcon />
+                  <GitHubIcon fontSize="small" />
                 </SocialButton>
                 <SocialButton href={`mailto:${EMAIL}`} label="Email">
-                  <MailIcon />
+                  <MailIcon fontSize="small" />
                 </SocialButton>
               </Stack>
             </Stack>
@@ -120,27 +140,16 @@ export default function Contact() {
 
           <Card
             ref={rightRef}
-            className="reveal reveal-right"
+            className="reveal"
             component="form"
             onSubmit={handleSubmit}
-            sx={{
-              p: { xs: 3, md: 4 },
-              borderRadius: 4,
-              textAlign: "left",
-            }}
+            sx={{ p: { xs: 2.5, md: 3.5 }, borderRadius: 2.5, textAlign: "left" }}
           >
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: 700, mb: 0.5, fontSize: "1.25rem" }}
-            >
+            <Typography sx={{ fontWeight: 600, mb: 0.5, fontSize: "1.15rem" }}>
               {t("contactSection.form_title")}
             </Typography>
             <Typography
-              sx={{
-                color: "text.secondary",
-                fontSize: "0.95rem",
-                mb: 3,
-              }}
+              sx={{ color: "text.secondary", fontSize: "0.92rem", mb: 3 }}
             >
               {t("contactSection.form_lead")}
             </Typography>
@@ -154,7 +163,7 @@ export default function Contact() {
             >
               <TextField
                 fullWidth
-                size="medium"
+                size="small"
                 placeholder={t("contactSection.form_name")}
                 value={form.name}
                 onChange={handleChange("name")}
@@ -162,6 +171,7 @@ export default function Contact() {
               />
               <TextField
                 fullWidth
+                size="small"
                 type="email"
                 placeholder={t("contactSection.form_email")}
                 value={form.email}
@@ -170,12 +180,14 @@ export default function Contact() {
               />
               <TextField
                 fullWidth
+                size="small"
                 placeholder={t("contactSection.form_subject")}
                 value={form.subject}
                 onChange={handleChange("subject")}
               />
               <TextField
                 fullWidth
+                size="small"
                 placeholder={t("contactSection.form_budget")}
                 value={form.budget}
                 onChange={handleChange("budget")}
@@ -204,20 +216,11 @@ export default function Contact() {
                 variant="contained"
                 size="large"
                 endIcon={<SendIcon />}
-                sx={{
-                  borderRadius: 12 / 8,
-                  minWidth: 160,
-                  fontWeight: 600,
-                }}
+                sx={{ minWidth: 168, fontWeight: 500, whiteSpace: "nowrap" }}
               >
                 {t("contactSection.form_submit")}
               </Button>
-              <Typography
-                sx={{
-                  color: "text.secondary",
-                  fontSize: "0.88rem",
-                }}
-              >
+              <Typography sx={{ color: "text.secondary", fontSize: "0.85rem" }}>
                 {t("contactSection.form_or_email")}{" "}
                 <Box
                   component="a"
@@ -225,7 +228,7 @@ export default function Contact() {
                   sx={{
                     color: "primary.main",
                     textDecoration: "none",
-                    fontWeight: 600,
+                    fontWeight: 500,
                     "&:hover": { textDecoration: "underline" },
                   }}
                 >
@@ -248,23 +251,16 @@ function SocialButton({ href, label, children }) {
       rel="noreferrer"
       aria-label={label}
       sx={{
-        width: 44,
-        height: 44,
-        borderRadius: 2.5,
+        width: 42,
+        height: 42,
+        borderRadius: 2,
         border: "1px solid",
         borderColor: "divider",
-        color: "text.primary",
-        bgcolor: (theme) =>
-          theme.palette.mode === "dark"
-            ? "rgba(255,255,255,0.03)"
-            : "rgba(11,11,20,0.03)",
+        color: "text.secondary",
         "&:hover": {
-          color: "primary.main",
-          borderColor: "primary.main",
-          bgcolor: (theme) =>
-            theme.palette.mode === "dark"
-              ? "rgba(99,102,241,0.08)"
-              : "rgba(99,102,241,0.06)",
+          color: "text.primary",
+          borderColor: "text.disabled",
+          bgcolor: "transparent",
         },
       }}
     >
